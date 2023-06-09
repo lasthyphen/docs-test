@@ -1,0 +1,64 @@
+{
+  "projectTools": [
+    {
+      "label": "Dijets Inc.",
+      "url": "https://dijets.io"
+    },
+    {
+      "label": "View Recent Transactions",
+      "url": "https://explorer.dijets.io"
+    }
+  ],
+  "support": [
+    {
+      "label": "User Guides",
+      "url": "https://support.dijets.co.uk"
+    },
+    {
+      "label": "Dijets Wallet",
+      "url": "https://wallet.dijets.io"
+    },
+    {
+      "label": "Recent Transactions",
+      "url": "https://explorer.dijets.io"
+    }
+  ],
+  "quickstarts": [
+    {
+      "label": "Running a Dijets Node",
+      "url": "https://docs-greyhyphen.vercel.app/docs/guides/getting-started/tutorials/run-dijets-node"
+    },
+    {
+      "label": "Creating a Test Network",
+      "url": "https://docs-greyhyphen.vercel.app/docs/guides/getting-started/tutorials/create-local-network"
+    },
+    {
+      "label": "Funding Test Accounts",
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/flutter"
+    },
+    {
+      "label": "Making Intra-Chain Transfers",
+      "url": "https://docs-greyhyphen.vercel.app/docs/guides/getting-started/tutorials/intrachain-transfer"
+    },
+    {
+      "label": "RPC Server APIs",
+      "url": "https://docs-greyhyphen.vercel.app/docs/guides/node-apis"
+    },
+    {
+      "label": "Developer Toolchains",
+      "url": "https://docs-greyhyphen.vercel.app/docs/guides/developer-toolchains"
+    }
+  ],
+  "docsGeneral": [
+    {
+      "icon": "arrowRight",
+      "label": "Go to DGC Portal",
+      "url": "https://governance.dijets.io"
+    },
+    {
+      "icon": "inbox",
+      "label": "DIPs Directory",
+      "url": "https://dips.dijets.io"
+    }
+  ]
+}

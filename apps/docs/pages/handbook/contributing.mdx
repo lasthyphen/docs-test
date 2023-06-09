@@ -1,0 +1,31 @@
+import Layout from '~/layouts/DefaultGuideLayout'
+
+export const meta = {
+  id: 'contributing',
+  title: 'Contributing',
+  description: 'Want to help?',
+}
+
+## How to contribute
+
+Dijets has many [open source repos](https://github.com/orgs/Dijets-Inc/repositories). Feel free to open a pull request or request a feature:
+
+- [Dijets Node Binaries](https://github.com/Dijets-Inc/diijetsnodego) - Golang implementation of Dijets NodeGo Binaries.
+- [Terraform Construct](https://github.com/Dijets-Inc) - A Terraform construct for spinning up Dijets Nodes.
+- [DIPs](https://github.com/Dijets-Inc/dips) - Dijets DIPs Directory.
+- [DijetsUP](https://github.com/Dijets-Inc/dijets-up) - CLI tool that lets you run and interact with a local Dijets network.
+- [browse all](https://github.com/orgs/Dijets-Inc/repositories)
+
+Want to contribute? Why not jump into our GitHub repo and:
+
+- [Join DGC Discussions](https://forum.dijets.io).
+- Submit an issue to one of our [repos](https://github.com/orgs/Dijets-Inc/repositories)
+- Report a performance issue or a part of the documentation that you find confusing.
+- Create a pull request in one of our [repos](https://github.com/orgs/Dijets-Inc/repositories)
+- [Translate our Readmes and Product Guides](https://github.com/Dijets-Inc/repositories).
+- Try our products and give feedback.
+- Spread the word if you like what we are doing.
+
+export const Page = ({ children }) => <Layout meta={meta} children={children} />
+
+export default Page

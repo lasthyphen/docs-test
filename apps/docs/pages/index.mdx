@@ -1,0 +1,368 @@
+import HomeLayout from '~/layouts/HomeLayout'
+import Link from 'next/link'
+import {
+  Button,
+  GlassPanel,
+  IconBackground,
+  IconChevronRight,
+  IconPanel,
+  IconActivity,
+  IconZap,
+  IconServer,
+  IconPlay,
+  TextLink,
+} from 'ui'
+import HomeMenuIconPicker from '~/components/Navigation/NavigationMenu/HomeMenuIconPicker'
+
+export const meta = {
+  title: 'Dijets Documentation',
+  description:
+    'Documentation for Dijets Ecosystem, its Ternary Chain Ledgers & its Domains.',
+  subtitle: 'Developer Documentation and API Reference',
+}
+
+<div className="flex flex-col">
+
+  <div>
+    <div className="max-w-xl">
+      ## Build on Dijets
+    </div>
+    <div className="grid grid-cols-12 gap-6 not-prose [&_svg]:text-brand-1100 [&_svg]dark:text-brand-900">
+      {products.map((product) => {
+        return (
+          <Link href={product.href} key={product.title} passHref>
+            <a className={product.span ?? 'col-span-12 md:col-span-4'}>
+              <GlassPanel {...product} icon={<IconServer className="text-brand-1100 dark:text-brand-900 w-4" width={18} height={18} />} background={true} showIconBg={true} showLink={false}>
+                {product.description}
+              </GlassPanel>
+            </a>
+          </Link>
+        )
+      })}
+    </div>
+
+    <div className="flex flex-col lg:grid grid-cols-12 gap-6 py-12 border-b">
+
+      <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0 [&_h3]:m-0">
+
+        <div className="md:max-w-xs 2xl:max-w-none">
+          <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0">
+            {/* <IconBackground>
+              <HomeMenuIconPicker icon="reference-cli" width={18} height={18} />
+            </IconBackground> */}
+            ## Dijets Node Libraries
+
+           <p className="text-scale-1100 text-sm p-0 m-0">
+          Spin up your own Dijets Node in minutes
+        </p>
+
+        <TextLink
+          label="Explore more resources"
+          url="/docs/guides/nodes"
+          className="no-underline text-brand-900 text-sm"
+        />
+          </div>
+        </div>
+
+      </div>
+
+      <div className="grid col-span-8 grid-cols-12 gap-6 not-prose">
+        {clientLibraries.map((product) => {
+          return (
+            <Link href={product.href} key={product.title} passHref>
+              <a className={product.span ?? 'col-span-6 md:col-span-4'}>
+                <IconPanel
+                  {...product}
+                  icon={<HomeMenuIconPicker icon={product.icon} width={18} height={18} />}
+                  background={true}
+                  showIconBg={true}
+                  showLink={false}
+                >
+                  {product.description}
+                </IconPanel>
+              </a>
+            </Link>
+          )
+        })}
+      </div>
+
+    </div>
+
+    <div className="flex flex-col lg:grid grid-cols-12 gap-6 py-12 border-b">
+
+      <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0">
+
+        ## Tutorials
+
+        <p className="text-scale-1100 text-sm p-0 m-0">
+          Get an overview of Dijets & understand some its key components through tutorials.
+        </p>
+
+        <TextLink
+          label="Explore more resources"
+          url="/docs/guides/developer-toolchains"
+          className="no-underline text-brand-900 text-sm"
+        />
+      </div>
+
+      <div className="grid col-span-8 grid-cols-12 gap-6 not-prose">
+        {migrationGuides.map((product) => {
+          return (
+            <Link
+              href={product.href}
+              key={product.title}
+              passHref
+            >
+              <a className={product.span ?? 'col-span-6 md:col-span-4'}>
+                <IconPanel {...product} background={true} showIconBg={true} showLink={false}>
+                  {product.description}
+                </IconPanel>
+              </a>
+            </Link>
+          )
+        })}
+      </div>
+
+    </div>
+
+  </div>
+
+  <div className="flex flex-col gap-6 py-12 border-b">
+
+    <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0 [&_h3]:m-0">
+
+      ### Additional resources
+
+    </div>
+
+    <div className="grid grid-cols-12 gap-6 not-prose">
+      {additionalResources.map((product) => {
+        return (
+          <Link
+            href={product.href}
+            key={product.title}
+            passHref
+          >
+          <a className={product.span ?? 'col-span-12 lg:col-span-6'}>
+            <GlassPanel {...product} background={false} >
+              {product.description}
+            </GlassPanel>
+          </a>
+          </Link>
+        )
+      })}
+    </div>
+
+  </div>
+
+  <div className="flex flex-col lg:grid grid-cols-12 gap-6 py-12">
+
+    <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0 [&_h3]:m-0">
+
+      <div className="md:max-w-xs 2xl:max-w-none">
+        <div className="flex items-center gap-3 mb-3 text-brand-1100 dark:text-brand-900">
+          <IconBackground>
+            <IconActivity className="text-brand-1100 dark:text-brand-900 w-4" />
+          </IconBackground>
+          ### RPC & Data APIs
+        </div>
+        <p className="text-scale-1100 text-sm">
+          Collection of JSON-RPC API endpoints & Methods for faster, reliable and decentralized Web 3.0
+        </p>
+        <TextLink
+          label="More on APIs"
+          url="/guides/node-apis"
+          className="no-underline text-brand-900 text-sm"
+        />
+      </div>
+
+    </div>
+
+    <div className="grid col-span-8 grid-cols-12 gap-6 not-prose">
+      <div className="col-span-full lg:col-span-8 grid grid-cols-12 gap-6">
+        {selfHostingOptions.map((product) => {
+          return (
+            <Link
+              href={product.href}
+              key={product.title}
+              passHref
+            >
+              <a className={product.span ?? 'col-span-6'}>
+                <IconPanel {...product} icon={<IconZap className="text-brand-1100 dark:text-brand-900 w-4" />} background={true} showIconBg={true} showLink={false}>
+                  {product.description}
+                </IconPanel>
+              </a>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+export const products = [
+  {
+    title: 'Quickstart',
+    icon: '/docs/img/icons/menu/database',
+    hasLightIcon: true,
+    href: 'guides/getting-started',
+    description:
+      'Quickstart provides links to all the key guides, tutorials and reference docs for anyone just starting with Dijets Development.',
+    span: 'col-span-12 md:col-span-6',
+  },
+  {
+    title: 'APIs',
+    icon: '/docs/img/icons/menu/auth',
+    hasLightIcon: true,
+    href: 'guides/node-apis',
+    description:
+      'Learn all about the APIs provided by the Dijets Node server software and 3rd party client APIs used to interact with Dijets Network.',
+    span: 'col-span-12 md:col-span-6',
+  },
+  {
+    title: 'DijetsJS',
+    icon: '/docs/img/icons/menu/dijetsjs',
+    hasLightIcon: true,
+    href: 'guides/dijetsjs',
+    description:
+      'A Javascript Client Library to connect & interface with Dijets Nodes and Network.',
+  },
+  {
+    title: 'ECC Resources',
+    icon: '/docs/img/icons/menu/realtime',
+    hasLightIcon: true,
+    href: 'guides/build-ecc',
+    description:
+      'Configure, test and deploy Enterprise Consortia Chains with pre-built or custom VMs.',
+  },
+  {
+    title: 'Developer Toolchains',
+    icon: '/docs/img/icons/menu/functions',
+    hasLightIcon: true,
+    href: 'guides/developer-toolchains',
+    description:
+      'Guides for existing developer toolkits that are fully compatible with Dijets Utility Chain.',
+  },
+]
+
+export const migrationGuides = [
+  {
+    title: 'Run Dijets Node',
+    icon: '/docs/img/icons/firebase-icon',
+    href: '/guides/getting-started/tutorials/run-dijets-node',
+  },
+  {
+    title: 'Local Test Network',
+    icon: '/docs/img/icons/firebase2-icon',
+    href: '/guides/getting-started/tutorials/create-local-network',
+  },
+  {
+    title: 'Fund Test Accounts',
+    icon: '/docs/img/icons/fund-test',
+    href: '/guides/getting-started/tutorials/funding-test-accounts',
+  },
+  {
+    title: 'Intra-Chain Transfers',
+    icon: '/docs/img/icons/intrachain',
+    href: '/guides/getting-started/tutorials/intrachain-transfer',
+  },
+  {
+    title: 'Dynamic Gas Fees',
+    icon: '/docs/img/icons/gasf',
+    href: '/guides/getting-started/tutorials/dynamic-gas-fee',
+  },
+  {
+    title: 'MultiSig UTXOs',
+    icon: '/docs/img/icons/multisig',
+    href: '/guides/getting-started/tutorials/multisig-utxos',
+  },
+]
+
+export const selfHostingOptions = [
+  {
+    title: 'Issuing API Calls',
+    icon: 'analytics',
+    href: '/guides/node-apis/issuing-api-calls',
+  },
+  {
+    title: 'Value Chain APIs',
+    icon: 'auth',
+    href: '/guides/node-apis/value-chain-api',
+  },
+  {
+    title: 'Method Chain APIs',
+    icon: 'realtime',
+    href: '/guides/node-apis/method-chain-api',
+  },
+  {
+    title: 'Utility Chain APIs',
+    icon: 'storage',
+    href: '/guides/node-apis/utility-chain-api',
+  },
+]
+
+export const clientLibraries = [
+  {
+    title: 'Build & Run',
+    icon: 'reference-javascript',
+    href: '/guides/nodes/run-dijets-node-manually',
+  },
+  {
+    title: 'Installer Script',
+    icon: 'reference-dart',
+    href: '/guides/nodes/run-dijets-node-with-installer-script',
+  },
+  {
+    title: 'Configs & Flags',
+    icon: 'reference-python',
+    href: '/guides/nodes/node-flags-configs',
+  },
+  {
+    title: 'Archive Nodes',
+    icon: 'reference-csharp',
+    href: '/guides/nodes/offline-pruning-utility-chain',
+  },
+  {
+    title: 'Validators',
+    icon: 'reference-swift',
+    href: '/guides/nodes/validator-nodes',
+  },
+  {
+    title: 'Backup & Restore',
+    icon: 'reference-kotlin',
+    href: '/guides/nodes/node-backup-restore',
+  },
+]
+
+export const additionalResources = [
+  {
+    title: 'Dijets CLI',
+    description: 'CLI tool that helps develop, configure and deploy private blockchains & ECCs on Dijets. ',
+    icon: '/docs/img/icons/cli-tools-light',
+    href: '/guides/dijets-cli-tool',
+  },
+  {
+    title: 'Dijets-Up CLI',
+    icon: '/docs/img/icons/cli-tools-light',
+    href: '/guides/dijets-up-tool',
+    description: 'CLI tool to run and interact with local test Dijets Networks.',
+  },
+  {
+    title: 'Dijets-Account-Helper CLI',
+    icon: '/docs/img/icons/cli-tools-light',
+    href: '/guides/dijets-helper',
+    description: 'A collection of helpful scripts for generating addresses and private keys etc.',
+  },
+  {
+    title: 'ECC CLI',
+    icon: '/docs/img/icons/cli-tools-light',
+    href: '/guides/dijets-ecc-tool',
+    description: 'Use the CLI to develop ECCs locally, configure VMs, and deploy them to different environments.',
+  },
+]
+
+export const Page = ({ children }) => <HomeLayout meta={meta} children={children} />
+
+export default Page

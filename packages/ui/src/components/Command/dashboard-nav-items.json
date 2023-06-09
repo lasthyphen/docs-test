@@ -1,0 +1,96 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "icon": "home",
+      "url": "http://www.example.com/home",
+      "sites": ["docs", "dashboard"],
+      "subItems": [
+        {
+          "label": "About",
+          "icon": "book",
+          "url": "http://www.example.com/about",
+          "sites": ["docs", "dashboard"]
+        },
+        {
+          "label": "Services",
+          "icon": "services",
+          "url": "http://www.example.com/services",
+          "sites": ["docs", "dashboard"]
+        },
+        {
+          "label": "Contact",
+          "icon": "contact",
+          "url": "http://www.example.com/contact",
+          "sites": ["docs", "dashboard"]
+        }
+      ]
+    },
+    {
+      "label": "Products",
+      "icon": "products",
+      "url": "http://www.example.com/products",
+      "sites": ["dashboard"],
+      "subItems": [
+        {
+          "label": "Mobile",
+          "icon": "mobile",
+          "url": "http://www.example.com/products/mobile"
+        },
+        {
+          "label": "In person",
+          "icon": "person",
+          "url": "http://www.example.com/products/in-person"
+        }
+      ]
+    }
+  ],
+  "docsTools": [
+    {
+      "label": "Database",
+      "url": "https://dev.dijets.io/docs/guides/getting-started"
+    },
+    {
+      "label": "Auth",
+      "url": "https://dev.dijets.io/docs/guides/getting-started"
+    },
+    {
+      "label": "Edge Functions",
+      "url": "https://dev.dijets.io/docs/guides/getting-started"
+    },
+    {
+      "label": "Realtime",
+      "url": "https://dev.dijets.io/docs/guides/getting-started"
+    },
+    {
+      "label": "Storage",
+      "url": "https://dev.dijets.io/docs/guides/getting-started"
+    }
+  ],
+  "docsSupport": [
+    {
+      "label": "Support",
+      "url": "https://support.dijets.co.uk"
+    },
+    {
+      "label": "System Status",
+      "url": "https://dijets.statuspage.io/"
+    },
+    {
+      "label": "Github Repos",
+      "url": "https://github.com/Dijets-Inc/repositories"
+    }
+  ],
+  "docsGeneral": [
+    {
+      "icon": "arrowRight",
+      "label": "Go to Wallet",
+      "url": "https://wallet.dijets.io"
+    },
+    {
+      "icon": "inbox",
+      "label": "Dijets Inc",
+      "url": "https://dijets.io"
+    }
+  ]
+}
