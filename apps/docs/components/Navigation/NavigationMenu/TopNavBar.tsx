@@ -13,7 +13,6 @@ import {
   Listbox,
   SearchButton,
 } from 'ui'
-import { references } from './NavigationMenu.constants'
 
 const TopNavBar: FC = () => {
   const { isDarkMode, toggleTheme } = useTheme()
@@ -24,26 +23,11 @@ const TopNavBar: FC = () => {
   const pathSegments = asPath.split('/')
 
   const library = pathSegments.length >= 3 ? pathSegments[2] : undefined
-  const libraryMeta = references?.[library] ?? undefined
-  const versions = libraryMeta?.versions ?? []
-
-  const version = versions.includes(pathSegments[pathSegments.indexOf(library) + 1])
-    ? pathSegments[pathSegments.indexOf(library) + 1]
-    : versions[0]
 
   useEffect(() => {
     setMounted(true)
   }, [isDarkMode])
 
-  const onSelectVersion = (version: string) => {
-    // [Joshen] Ideally we use <Link> but this works for now
-    if (!library) return
-    if (version === versions[0]) {
-      push(`/reference/${library}`)
-    } else {
-      push(`/reference/${library}/${version}`)
-    }
-  }
 
   // [Joshen] Kaizen: Use UI library's SidePanel for this
   const toggleMobileMenu = () => {
@@ -74,22 +58,6 @@ const TopNavBar: FC = () => {
                 />
               </a>
             </Link>
-          )}
-          {versions.length > 0 && (
-            <div className="ml-8">
-              <Listbox
-                size="small"
-                defaultValue={version}
-                style={{ width: '70px' }}
-                onChange={onSelectVersion}
-              >
-                {versions.map((version) => (
-                  <Listbox.Option key={version} label={version} value={version}>
-                    {version}
-                  </Listbox.Option>
-                ))}
-              </Listbox>
-            </div>
           )}
         </div>
         <div className="col-span-5 flex items-center">

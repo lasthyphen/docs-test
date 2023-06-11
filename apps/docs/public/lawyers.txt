@@ -5,11 +5,11 @@ ____________
 
 For compliance.
 
-Supabase™ is a trademark of Supabase Inc.
+Dijets™ is a trademark of Dijets Inc.
 
 If you're a creator/contributor to one of these packages, thanks!
 
-Last updated: 2022-03-29
+Last updated: 2023-05-22
 
 JavaScript/TypeScript
 

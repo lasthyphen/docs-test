@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { IconChevronRight, IconArrowLeft } from '~/../../packages/ui'
-import { references } from './NavigationMenu/NavigationMenu.constants'
 
 import { NavMenuGroup, NavMenuSection } from './Navigation.types'
 import * as Accordion from '@radix-ui/react-accordion'
@@ -12,7 +11,6 @@ const SideBar = ({ menuItems = [] }: { menuItems: any }) => {
   const pathSegments = asPath.split('/')
 
   const isInReferencePages = pathSegments.includes('reference') && pathSegments.length >= 3
-  const referenceMeta = pathSegments.length >= 3 ? references[pathSegments[2]] : undefined
 
   const currentSection: NavMenuGroup = menuItems.find((group) => {
     const foundItem = group.items.find((section) => {
@@ -56,20 +54,6 @@ const SideBar = ({ menuItems = [] }: { menuItems: any }) => {
               </div>
             </a>
           </Link>
-          {referenceMeta !== undefined && (
-            <div className="my-5 flex items-center space-x-4">
-              <div className="h-10 w-10 rounded bg-scale-500 flex items-center justify-center">
-                <Image
-                  className="rounded"
-                  width={24}
-                  height={24}
-                  alt={referenceMeta.name}
-                  src={referenceMeta.icon}
-                />
-              </div>
-              <p className="text-scale-1200 font-bold">{referenceMeta.name}</p>
-            </div>
-          )}
         </>
       )}
       {menuItems.length === 1 ? (

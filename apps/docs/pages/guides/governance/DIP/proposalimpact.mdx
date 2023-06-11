@@ -1,0 +1,32 @@
+---
+id: proposalimpact
+title: 'Priority Markers'
+description: An HTTP Client for PostgreSQL Functions.
+---
+
+Hal applies impact estimations & priority markers to active governance proposals (DIPs). The goal of these markers is to provide DGC Members, 
+with an idea of how important it is that they pay attention to a given governance proposal in a given limited time.
+
+Depending upon the magnitude of impact a governance proposal may have on Dijets; HAL can assign: 
+
+1. Low
+1. Medium
+1. High
+
+priority markers to active proposals and governance activities. HAL uses the following guidelines when assigning the priority markers:
+
+### Likely to be High Impact priority marker
+
+* Anything that adds or removes a non-trivial amount of DJTX from the Treasury Wallet is likely to be marked as `high` impact.
+* Anything that permanently changes any of the existing governance processes or structures is likely to be marked as `high` impact.
+* Anything related to onboarding and offboarding sub-committee(s) is likely to be marked as `high` impact.
+* Anything DGC Members collectively vote to accept and execute for the **first time** is likely to be marked as `high` impact.
+
+### Likely to be Medium Impact priority marker
+
+* Anything that adds or removes a trivial amount of money from the Treasury Wallet is likely to be marked as `medium` impact.
+* Proposals that may lead to later decisions that add or remove a non-trivial amount of DJTX from the Treasury Wallet is likely to be marked as `medium` impact.
+
+### Likely to be Low Impact priority marker
+
+* Anything related to minor wording changes and/or fixes to existing DIPs are likely to be marked as `low` impact.

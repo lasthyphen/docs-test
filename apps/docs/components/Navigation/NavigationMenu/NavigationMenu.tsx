@@ -58,110 +58,6 @@ const menus: Menu[] = [
     path: '/guides/developer-toolchains',
     type: 'guide',
   },
-  {
-    id: 'supabase_cli',
-    // TODO: Add path '/reference/cli/config'
-    path: '/guides/cli',
-    type: 'guide',
-  },
-  {
-    id: 'reference_javascript_v1',
-    path: '/reference/javascript/v1',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_js_v1.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_javascript_v2',
-    path: '/reference/javascript',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_js_v2.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_dart_v0',
-    path: '/reference/dart/v0',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_dart_v0.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_dart_v1',
-    path: '/reference/dart',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_dart_v1.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_csharp_v0',
-    path: '/reference/csharp',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_csharp_v0.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_python_v2',
-    path: '/reference/python',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_py_v2.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_swift_v0',
-    path: '/reference/swift',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_swift_v0.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_kotlin_v0',
-    path: '/reference/kotlin',
-    commonSectionsFile: 'common-client-libs-sections.json',
-    specFile: 'supabase_kt_v0.yml',
-    type: 'reference',
-  },
-  {
-    id: 'reference_cli',
-    path: '/reference/cli',
-    commonSectionsFile: 'common-cli-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_api',
-    path: '/reference/api',
-    commonSectionsFile: 'common-api-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_self_hosting_auth',
-    path: '/reference/self-hosting-auth',
-    commonSectionsFile: 'common-self-hosting-auth-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_self_hosting_storage',
-    path: '/reference/self-hosting-storage',
-    commonSectionsFile: 'common-self-hosting-storage-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_self_hosting_realtime',
-    path: '/reference/self-hosting-realtime',
-    commonSectionsFile: 'common-self-hosting-realtime-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_self_hosting_analytics',
-    path: '/reference/self-hosting-analytics',
-    commonSectionsFile: 'common-self-hosting-analytics-sections.json',
-    type: 'reference',
-  },
-  {
-    id: 'reference_self_hosting_functions',
-    path: '/reference/self-hosting-functions',
-    commonSectionsFile: 'common-self-hosting-functions-sections.json',
-    type: 'reference',
-  },
 ]
 
 function getMenuById(id: string) {
@@ -184,15 +80,6 @@ function getMenuElement(menu: Menu) {
       return <NavigationMenuHome />
     case 'guide':
       return <NavigationMenuGuideList id={menu.id} />
-    case 'reference':
-      return (
-        <NavigationMenuRefList
-          id={menu.id}
-          basePath={menu.path}
-          commonSectionsFile={menu.commonSectionsFile}
-          specFile={menu.specFile}
-        />
-      )
     default:
       throw new Error(`Unknown menu type '${menuType}'`)
   }

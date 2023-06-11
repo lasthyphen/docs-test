@@ -1,0 +1,51 @@
+import Layout from '~/layouts/DefaultGuideLayout'
+
+export const meta = {
+  id: 'djtx',
+  title: 'DJTX Coin',
+  description: 'DJTX is the cryptocurrency that powers Dijets',
+  hide_table_of_contents: true,
+}
+# DJTX
+
+DJTX is the native utility token of Dijets. It’s a hard-capped, scarce asset that is used to
+pay for fees, secure the platform through staking, provide a basic unit of account between
+many diverse subnetworks created on Dijets. 
+
+:::info
+
+- `1 nDJTX` is equal to `0.000000001 DJTX`.
+
+:::
+
+## Utility
+
+DJTX is a capped-supply (up to 100M) resource in the Dijets ecosystem that's used to power the
+network. DJTX is used to secure the ecosystem through staking and for day-to-day operations like
+issuing transactions, and for use in its primary domain indices.
+
+DJTX represents the weight that each node has in network decisions. No single actor owns
+the Dijets Network, so each validator in the network is given a proportional weight in the
+network's decisions corresponding to the proportion of total stake that they own through proof
+of stake (PoS).
+
+Any entity trying to execute a transaction on Dijets pays a corresponding fee (commonly known as
+"gas") to run it on the network. The fees used to execute a transaction on Dijets is burned,
+or permanently removed from circulating supply.
+
+## Tokenomics
+
+A fixed amount of 100M DJTX was minted at genesis, and a small amount of DJTX is constantly minted
+as a reward to validators. The protocol rewards validators for good behavior by minting them DJTX
+rewards at the end of their staking period. The minting process offsets the DJTX burned by
+transactions fees. While DJTX is still far away from its supply cap, it will almost always remain an
+inflationary asset.
+
+Dijets does not take away any portion of a validator's already staked tokens (commonly known as
+"slashing") for negligent/malicious staking periods, however this behavior is disincentivised as
+validators who attempt to do harm to the network would expend their node's computing resources
+for no reward.
+
+export const Page = ({ children }) => <Layout meta={meta} children={children} />
+
+export default Page

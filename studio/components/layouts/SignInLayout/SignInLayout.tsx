@@ -101,7 +101,7 @@ const SignInLayout = ({
                           ? `${BASE_PATH}/img/supabase-dark.svg`
                           : `${BASE_PATH}/img/supabase-light.svg`
                       }
-                      alt="Supabase Logo"
+                      alt="Dijets Logo"
                       height={24}
                       width={120}
                     />

@@ -8,7 +8,7 @@ import HelpPopover from './HelpOver'
 import { Button, IconCommand, IconGitHub, IconMoon, IconSearch, IconSun, SearchButton } from 'ui'
 
 import { getPageType } from '~/lib/helpers'
-import { dijetsjs, references } from './NavigationMenu.constants'
+import { dijetsjs } from './NavigationMenu.constants'
 
 const TopNavBarRef: FC = () => {
   const { isDarkMode, toggleTheme } = useTheme()
@@ -19,12 +19,7 @@ const TopNavBarRef: FC = () => {
   const pathSegments = asPath.split('/')
 
   const library = pathSegments.length >= 3 ? pathSegments[2] : undefined
-  const libraryMeta = references?.[library] ?? undefined
-  const versions = libraryMeta?.versions ?? []
 
-  const version = versions.includes(pathSegments[pathSegments.indexOf(library) + 1])
-    ? pathSegments[pathSegments.indexOf(library) + 1]
-    : versions[0]
 
   const pageType = getPageType(asPath)
 
@@ -34,18 +29,8 @@ const TopNavBarRef: FC = () => {
 
   const pageLinks = [
     { text: 'Guides', key: 'docs', link: '/' },
-    { text: 'Reference', key: 'reference', link: '/reference' },
   ]
 
-  const onSelectVersion = (version: string) => {
-    // [Joshen] Ideally we use <Link> but this works for now
-    if (!library) return
-    if (version === versions[0]) {
-      push(`/reference/${library}`)
-    } else {
-      push(`/reference/${library}/${version}`)
-    }
-  }
 
   // [Joshen] Kaizen: Use UI library's SidePanel for this
   const toggleMobileMenu = () => {

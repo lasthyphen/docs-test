@@ -6,7 +6,7 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "embeddings": "tsx lib/generate-embeddings.ts",
+    "embeddings": "tsx scripts2/generate-embeddings.ts",
     "build:analyze": "ANALYZE=true next build",
     "lint": "next lint",
     "test": "jest",
