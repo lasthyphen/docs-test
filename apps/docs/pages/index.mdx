@@ -25,20 +25,36 @@ export const meta = {
 
   <div>
     <div className="max-w-xl">
-      ## Build on Dijets
+      ## Framework
     </div>
     <div className="grid grid-cols-12 gap-6 not-prose [&_svg]:text-brand-1100 [&_svg]dark:text-brand-900">
       {products.map((product) => {
         return (
           <Link href={product.href} key={product.title} passHref>
             <a className={product.span ?? 'col-span-12 md:col-span-4'}>
-              <GlassPanel {...product} icon={<IconServer className="text-brand-1100 dark:text-brand-900 w-4" width={18} height={18} />} background={true} showIconBg={true} showLink={false}>
+              <GlassPanel {...product} background={true} showIconBg={true} showLink={false}>
                 {product.description}
               </GlassPanel>
             </a>
           </Link>
         )
       })}
+      {platform.map((product) => {
+      return (
+        <Link
+          href={`/${product.href}`}
+          key={product.title}
+          passHref
+        >
+          <a className={'col-span-12 md:col-span-6'}>
+            <GlassPanel {...product} background={false} showIconBg={true}>
+              {product.description}
+            </GlassPanel>
+          </a>
+        </Link>
+      )
+
+})}
     </div>
 
     <div className="flex flex-col lg:grid grid-cols-12 gap-6 py-12 border-b">
@@ -47,18 +63,19 @@ export const meta = {
 
         <div className="md:max-w-xs 2xl:max-w-none">
           <div className="col-span-4 flex flex-col gap-1 [&_h2]:m-0">
-            {/* <IconBackground>
+          <div className="flex gap-2">
+            <IconBackground>
               <HomeMenuIconPicker icon="reference-cli" width={18} height={18} />
-            </IconBackground> */}
+            </IconBackground>
             ## Dijets Node Libraries
-
+          </div>
            <p className="text-scale-1100 text-sm p-0 m-0">
           Spin up your own Dijets Node in minutes
         </p>
 
         <TextLink
           label="Explore more resources"
-          url="/docs/guides/nodes"
+          url="/guides/nodes"
           className="no-underline text-brand-900 text-sm"
         />
           </div>
@@ -100,7 +117,7 @@ export const meta = {
 
         <TextLink
           label="Explore more resources"
-          url="/docs/guides/developer-toolchains"
+          url="/guides/developer-toolchains"
           className="no-underline text-brand-900 text-sm"
         />
       </div>
@@ -205,7 +222,7 @@ export const meta = {
 export const products = [
   {
     title: 'Quickstart',
-    icon: '/docs/img/icons/menu/database',
+    icon: '/docs/img/icons/menu/quickstart',
     hasLightIcon: true,
     href: 'guides/getting-started',
     description:
@@ -214,7 +231,7 @@ export const products = [
   },
   {
     title: 'APIs',
-    icon: '/docs/img/icons/menu/auth',
+    icon: '/docs/img/icons/menu/api',
     hasLightIcon: true,
     href: 'guides/node-apis',
     description:
@@ -223,7 +240,7 @@ export const products = [
   },
   {
     title: 'DijetsJS',
-    icon: '/docs/img/icons/menu/dijetsjs',
+    icon: '/docs/img/icons/menu/javascript',
     hasLightIcon: true,
     href: 'guides/dijetsjs',
     description:
@@ -231,7 +248,7 @@ export const products = [
   },
   {
     title: 'ECC Resources',
-    icon: '/docs/img/icons/menu/realtime',
+    icon: '/docs/img/icons/menu/eccresources',
     hasLightIcon: true,
     href: 'guides/build-ecc',
     description:
@@ -239,7 +256,7 @@ export const products = [
   },
   {
     title: 'Developer Toolchains',
-    icon: '/docs/img/icons/menu/functions',
+    icon: '/docs/img/icons/menu/toolchains',
     hasLightIcon: true,
     href: 'guides/developer-toolchains',
     description:
@@ -277,6 +294,26 @@ export const migrationGuides = [
     title: 'MultiSig UTXOs',
     icon: '/docs/img/icons/multisig',
     href: '/guides/getting-started/tutorials/multisig-utxos',
+  },
+]
+
+export const platform = [
+  {
+    header: '/docs/img/cards/sample-card-header-3.svg',
+    title: 'Smart Contracts & DApps',
+    icon: '/docs/img/icons/menu/platformz',
+    hasLightIcon: true,
+    href: 'guides/launch-dapps-on-uc',
+    description:
+      'Learn all about Dijets Utility Chain and how to build DApps and deploy smart contracts on it.',
+  },
+  {
+    header: '/docs/img/cards/sample-card-header.svg',
+    title: 'DijetsNodeGo Resources',
+    icon: '/docs/img/icons/menu/procev',
+    hasLightIcon: true,
+    href: 'guides/nodes',
+    description: 'Learn all about building, maintaining, upgrading & configuring DijetsNodeGo instances.',
   },
 ]
 

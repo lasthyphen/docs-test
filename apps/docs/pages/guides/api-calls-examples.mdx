@@ -19,7 +19,7 @@ curl -X POST --data '{
     "method" :"admin.alias",
     "params": {
         "alias":"myAlias",
-        "endpoint":"bc/X"
+        "endpoint":"bc/V"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
@@ -27,7 +27,7 @@ The admin api uses the endpoint /ext/admin
 
 <Admonition type="info">
 The Admin API is disabled by default for security reasons. To run a node with the Admin API
-enabled, use [config flag `--api-admin-enabled=true`](../../../nodes/maintain/dijetsnodego-config-flags.md#--api-admin-enabled-boolean).
+enabled, use [config flag `--api-admin-enabled=true`](/docs/guides/nodes/node-flags-configs#apis).
 
 This API set is for a specific node, it is unavailable on the [public server](../public-api-server.md).
 
@@ -72,7 +72,7 @@ curl -X POST --data '{
     "method" :"admin.alias",
     "params": {
         "alias":"myAlias",
-        "endpoint":"bc/X"
+        "endpoint":"bc/V"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
@@ -87,7 +87,7 @@ curl -X POST --data '{
 }
 ```
 
-Now, calls to the Value Chain can be made to either `/ext/bc/X` or, equivalently, to `/ext/myAlias`.
+Now, calls to the Value Chain can be made to either `/ext/bc/V` or, equivalently, to `/ext/myAlias`.
 
 ### `admin.aliasChain`
 

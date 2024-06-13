@@ -33,7 +33,7 @@ Not recommended for use on Mainnet. See warning notice in [Keystore API](keystor
 
 Add a delegator to the Primary Network.
 
-A delegator stakes DJTX and specifies a validator (the delegatee) to validate on their behalf. The
+A delegator stakes DJT and specifies a validator (the delegatee) to validate on their behalf. The
 delegatee has an increased probability of being sampled by other validators (weight) in proportion
 to the stake delegated to them.
 
@@ -76,8 +76,8 @@ platform.addDelegator(
 
 - `nodeID` is the ID of the node to delegate to.
 - `startTime` is the Unix time when the delegator starts delegating.
-- `endTime` is the Unix time when the delegator stops delegating (and staked DJTX is returned).
-- `stakeAmount` is the amount of nDJTX the delegator is staking.
+- `endTime` is the Unix time when the delegator stops delegating (and staked DJT is returned).
+- `stakeAmount` is the amount of nDJT the delegator is staking.
 - `rewardAddress` is the address the validator reward goes to, if there is one.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
   addresses as needed.
@@ -218,10 +218,10 @@ Not recommended for use on Mainnet. See warning notice in [Keystore API](keystor
 
 </Admonition>
 
-Add a validator to the Primary Network. You must stake DJTX to do this. If the node is sufficiently
+Add a validator to the Primary Network. You must stake DJT to do this. If the node is sufficiently
 correct and responsive while validating, you receive a reward when end of staking period is reached.
 The validator’s probability of being sampled by other validators during consensus is in proportion
-to the amount of DJTX staked.
+to the amount of DJT staked.
 
 The validator charges a fee to delegators; the former receives a percentage of the delegator’s
 validation reward (if any.) The minimum delegation fee is 2%. A transaction that adds a validator
@@ -231,9 +231,9 @@ The validation period must be between 2 weeks and 1 year for the Mainnet, and 24
 for Dijets TestNet Testnet.
 
 There is a maximum total weight imposed on validators. This means that no validator will ever have
-more DJTX staked and delegated to it than this value.
-This value will initially be set to `min(5 * amount staked, 3M DJTX)`.
-The total value on a validator is 3 million DJTX.
+more DJT staked and delegated to it than this value.
+This value will initially be set to `min(5 * amount staked, 3M DJT)`.
+The total value on a validator is 3 million DJT.
 
 <Admonition type="info">
 
@@ -270,8 +270,8 @@ platform.addValidator(
 - `nodeID` is the node ID of the validator being added.
 - `startTime` is the Unix time when the validator starts validating the Primary Network.
 - `endTime` is the Unix time when the validator stops validating the Primary Network (and staked
-  DJTX is returned).
-- `stakeAmount` is the amount of nDJTX the validator is staking.
+  DJT is returned).
+- `stakeAmount` is the amount of nDJT the validator is staking.
 - `rewardAddress` is the address the validator reward will go to, if there is one.
 - `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
   Up to 4 decimal places allowed; additional decimal places are ignored. Must be between 0 and 100,
@@ -532,16 +532,16 @@ curl -X POST --data '{
 }
 ```
 
-### `method.exportDJTX`
+### `method.exportDJT`
 
-Send DJTX from an address on the Method Chain to an address on the Value Chain or Utility Chain. After issuing this
+Send DJT from an address on the Method Chain to an address on the Value Chain or Utility Chain. After issuing this
 transaction, you must call the Value Chain's [`avm.import`](value-chain#avmimport) or Utility Chain's
-[`djtx.import`](utility-chain#djtximport) with assetID `DJTX` to complete the transfer.
+[`djtx.import`](utility-chain#djtximport) with assetID `DJT` to complete the transfer.
 
 **Signature:**
 
 ```text
-platform.exportDJTX(
+platform.exportDJT(
     {
         amount: int,
         from: []string, // optional
@@ -557,13 +557,13 @@ platform.exportDJTX(
 }
 ```
 
-- `amount` is the amount of nDJTX to send.
-- `to` is the address on the Value Chain or Utility Chain to send the DJTX to.
+- `amount` is the amount of nDJT to send.
+- `to` is the address on the Value Chain or Utility Chain to send the DJT to.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
   addresses as needed.
 - `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the
   addresses controlled by the user.
-- `username` is the user sending the DJTX and paying the transaction fee.
+- `username` is the user sending the DJT and paying the transaction fee.
 - `password` is `username`‘s password.
 - `txID` is the ID of this transaction.
 
@@ -572,7 +572,7 @@ platform.exportDJTX(
 ```text
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.exportDJTX",
+    "method": "platform.exportDJT",
     "params": {
         "to":"X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
         "amount":1,
@@ -652,7 +652,7 @@ curl -X POST --data '{
 
 ### `method.getBalance`
 
-Get the balance of DJTX controlled by a given address.
+Get the balance of DJT controlled by a given address.
 
 **Signature:**
 
@@ -1038,7 +1038,7 @@ curl -X POST --data '{
 }
 ```
 
-The response in this example indicates that DJTX’s supply is at most 365.865 million.
+The response in this example indicates that DJT’s supply is at most 365.865 million.
 
 ### `method.getCurrentValidators`
 
@@ -1127,7 +1127,7 @@ platform.getCurrentValidators({
     - `txID` is the delegator transaction.
     - `startTime` is the Unix time when the delegator started.
     - `endTime` is the Unix time when the delegator stops.
-    - `stakeAmount` is the amount of nDJTX this delegator staked.
+    - `stakeAmount` is the amount of nDJT this delegator staked.
     - `nodeID` is the validating node’s node ID.
     - `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of
       `addresses`.
@@ -1231,7 +1231,7 @@ curl -X POST --data '{
 
 ### `method.getMaxStakeAmount`
 
-Returns the maximum amount of nDJTX staking to the named node during a particular time period.
+Returns the maximum amount of nDJT staking to the named node during a particular time period.
 
 **Signature:**
 
@@ -1486,7 +1486,7 @@ curl -X POST --data '{
 
 ### `method.getStake`
 
-Get the amount of nDJTX staked by a set of addresses. The amount returned does not include staking
+Get the amount of nDJT staked by a set of addresses. The amount returned does not include staking
 rewards.
 
 **Signature:**
@@ -2101,7 +2101,7 @@ curl -X POST --data '{
 }
 ```
 
-### `method.importDJTX`
+### `method.importDJT`
 
 <Admonition type="caution">
 
@@ -2109,16 +2109,16 @@ Not recommended for use on Mainnet. See warning notice in [Keystore API](keystor
 
 </Admonition>
 
-Complete a transfer of DJTX from the Value Chain, or Utility Chain to the Method Chain.
+Complete a transfer of DJT from the Value Chain, or Utility Chain to the Method Chain.
 
 Before this method is called, you must call the Value Chain’s [`avm.export`](value-chain#avmexport) or
-Utility Chain’s [`djtx.export`](utility-chain-api#djtxexport) method with assetID `DJTX` to initiate the
+Utility Chain’s [`djtx.export`](utility-chain-api#djtxexport) method with assetID `DJT` to initiate the
 transfer.
 
 **Signature:**
 
 ```text
-platform.importDJTX(
+platform.importDJT(
     {
         to: string,
         sourceChain: string,
@@ -2134,7 +2134,7 @@ platform.importDJTX(
 }
 ```
 
-- `to` is the ID of the address the DJTX is imported to. This must be the same as the `to` argument
+- `to` is the ID of the address the DJT is imported to. This must be the same as the `to` argument
   in the corresponding call to the Value Chain’s or Utility Chain's `export`.
 - `sourceChain` is the chain the funds are coming from. Must be either `"X"` or `"C"`.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
@@ -2149,7 +2149,7 @@ platform.importDJTX(
 ```text
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importDJTX",
+    "method": "platform.importDJT",
     "params": {
         "to": "P-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
         "from": ["P-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],

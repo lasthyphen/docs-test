@@ -4,6 +4,6 @@ export const nameMap = {
   auth: 'Auth Server',
   storage: 'Storage Server',
   postgres: 'Postgres',
-  dart: 'Supabase Flutter Library',
-  javascript: 'Supabase JavaScript Library',
+  dart: 'Dijets Flutter Library',
+  javascript: 'Dijets JavaScript Library',
 }

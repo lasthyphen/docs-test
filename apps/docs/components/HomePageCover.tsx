@@ -23,10 +23,10 @@ const HomePageCover = (props) => {
             <IconBackground>
               <IconCpu className="text-brand-1100 dark:text-brand-900 w-4" />
             </IconBackground>
-            <h3 className="text-2xl m-0">Dijetal Toolbox</h3>
+            <h3 className="text-xl m-0">Dijetal Toolbox</h3>
           </div>
           <p className="text-scale-1100 text-sm">
-            Discover how to use developer toolchains to deploy DApps & smart contracts on Dijets.
+            Developer toolchains to deploy DApps & smart contracts on Dijets.
           </p>
         </div>
         <div className="flex flex-wrap md:grid md:grid-cols-4 gap-3 sm:gap-3">
@@ -106,18 +106,19 @@ const HomePageCover = (props) => {
   )
 
   return (
-    <div className="w-full bg-scale-100 border-b prose dark:prose-dar max-w-none mb-16 md:mb-12 xl:mb-0">
+    <div className="w-full bg-scale-100 border-b dark:border-[#2c2c2c7a] prose dark:prose-dar max-w-none mb-16 md:mb-12 xl:mb-0 relative">
+    <div className="sc-c3c5ba47-7 kIlNMj top-[30%] lg:-top-[10%]"></div>
       <div className="max-w-7xl px-5 mx-auto py-8 sm:pb-16 sm:pt-12 xl:pt-16 flex flex-col xl:flex-row justify-between gap-12 xl:gap-12">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start sm:items-center w-full max-w-xl">
           <DocsCoverLogo />
           <div className="flex flex-col">
             <h1 className="m-0 mb-3 text-2xl sm:text-3xl">{props.meta?.title}</h1>
-            <p className="m-0 text-scale-1100">
-            This documentation is designed to provide an overview of Dijets, its Ternary Chain Ledgers & its Primary Domains.
+            <p className="m-0 text-sm text-scale-900">
+           Dijets Documentation covers the fundamentals of Dijets architecture and platform, its tech stack, public & private APIs, toolchains & much more.
             </p>
           </div>
         </div>
-        <div className="w-full xl:max-w-[365px] -mb-40">
+        <div className="w-full xl:max-w-[324px] lg:max-w-[324px] max-w-[300px] -mb-40 mr-auto ml-auto lg:mr-0 z-[5]">
           <GettingStarted />
         </div>
       </div>

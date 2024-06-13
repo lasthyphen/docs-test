@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .font-mono {
+    font-family: IBM Plex Mono, monospace !important;
+}
+}
+
+@layer base {
+}
+
 @font-face {
   font-family: 'custom-font';
   src: url(../../../packages/common/assets/fonts/CustomFont-Book.woff2) format('woff2'),
@@ -105,6 +114,21 @@ article h1 {
 code[class*='language-'],
 pre[class*='language-'] {
   text-shadow: none !important;
+}
+
+.sc-c3c5ba47-7.kIlNMj {
+  position: absolute;
+  left: 40%;
+  width: 80%;
+  height: 80%;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgb(42, 43, 48) 1px, rgb(42, 43, 48) 1px, transparent 1px, transparent 100%);
+  background-repeat: repeat;
+  background-position: left center;
+  background-size: 8px 8px;
+  mask-image: radial-gradient(rgb(0, 0, 0), transparent 50%);
+  opacity: 0.8;
+  z-index: 3;
 }
 
 // Spec doc specifics ported from docusaurus

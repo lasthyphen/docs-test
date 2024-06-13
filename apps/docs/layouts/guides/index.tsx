@@ -86,9 +86,9 @@ const Layout: FC<Props> = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <NextSeo
-        canonical={props.meta?.canonical ?? `https://supabase.com/docs${asPath}`}
+        canonical={props.meta?.canonical ?? `https://dijets.io/docs${asPath}`}
         openGraph={{
-          url: `https://supabase.com/docs${asPath}`,
+          url: `https://dijets.io/docs${asPath}`,
           type: 'article',
           videos: props.meta?.video && [
             {
@@ -102,7 +102,7 @@ const Layout: FC<Props> = (props) => {
           article: {
             publishedTime: new Date().toISOString(),
             modifiedTime: new Date().toISOString(),
-            authors: ['Supabase'],
+            authors: ['Dijets'],
           },
         }}
       />

@@ -106,7 +106,7 @@ const address = wallet.address
 
 The function `calcFeeData()` estimates the max fee and max priority fee per gas
 according to network activity using the Utility Chain APIs. This function returns max
-fee and max priority fee per gas in units of `nDJTX` or `gwei` (1 DJTX = 10^9
+fee and max priority fee per gas in units of `nDJT` or `gwei` (1 DJT = 10^9
 gwei).
 
 ```javascript
@@ -138,10 +138,10 @@ const calcFeeData = async (
 
 The function `sendDjtx()` takes 4 arguments -
 
-- `amount` - Amount of DJTX to send in the transaction
-- `address` - Destination address to which we want to send DJTX
-- `maxFeePerGas` - Desired maximum fee per gas you want to pay in nDJTX
-- `maxPriorityFeePerGas` - Desired maximum priority fee per gas you want to pay in nDJTX
+- `amount` - Amount of DJT to send in the transaction
+- `address` - Destination address to which we want to send DJT
+- `maxFeePerGas` - Desired maximum fee per gas you want to pay in nDJT
+- `maxPriorityFeePerGas` - Desired maximum priority fee per gas you want to pay in nDJT
 - `nonce` - Used as a differentiator for more than 1 transaction with same signer
 
 The last 3 arguments are optional, and if `undefined` is passed, then it will
@@ -155,7 +155,7 @@ parameter should only be used when you are either re-issuing or cancelling a
 stuck transaction.
 
 ```javascript
-// Function to send DJTX
+// Function to send DJT
 const sendDjtx = async (
   amount,
   to,
@@ -206,7 +206,7 @@ const sendDjtx = async (
 This function calculates transaction hash from the signed transaction and logs
 on the console, the URL for transaction status on Dijets Utility Chain explorer.
 
-## Calling the `sendDJTX()` Function
+## Calling the `sendDJT()` Function
 
 There are various ways to call this function. We may or may not pass the
 optional arguments like max fee and max priority fee. It is recommended to set
@@ -217,7 +217,7 @@ base fee.
 
 If you do not pass these arguments, then it will automatically estimate the max
 fee and priority fee from the network. For example, let's say, Bob want to pay 100
-nDJTX per gas for a transaction and a small tip of 2 nDJTX, then Bob will call
+nDJT per gas for a transaction and a small tip of 2 nDJT, then Bob will call
 the following function.
 
 ```javascript

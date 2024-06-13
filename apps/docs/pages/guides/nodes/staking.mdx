@@ -22,14 +22,14 @@ scarce resource. This makes it infeasibly expensive for an attacker to gain
 enough influence over the network to compromise its security. In proof-of-work
 systems, the scarce resource is computing power. On Dijets, the scarce
 resource is the native token,
-DJTX. For a node to
+DJT. For a node to
 validate
-a blockchain on Dijets, it must stake DJTX.
+a blockchain on Dijets, it must stake DJT.
 
 ## Staking Parameters on Dijets
 
 When a validator is done validating
-it receives back the DJTX tokens it staked. It may receive a reward for helping
+it receives back the DJT tokens it staked. It may receive a reward for helping
 to secure the network. A validator only receives a validation
 reward
 if it is sufficiently responsive and correct during the time it validates. 
@@ -43,16 +43,16 @@ Staking rewards are sent to your wallet address at the end of the staking term
 
 ### Mainnet
 
-- The minimum amount that a validator must stake is 2,000 DJTX
-- The minimum amount that a delegator must delegate is 25 DJTX
+- The minimum amount that a validator must stake is 2,000 DJT
+- The minimum amount that a delegator must delegate is 25 DJT
 - The minimum amount of time one can stake funds for validation is 2 weeks
 - The maximum amount of time one can stake funds for validation is 1 year
 - The minimum amount of time one can stake funds for delegation is 2 weeks
 - The maximum amount of time one can stake funds for delegation is 1 year
 - The minimum delegation fee rate is 2%
 - The maximum weight of a validator (their own stake + stake delegated to them)
-  is the minimum of 3 million DJTX and 5 times the amount the validator staked.
-  For example, if you staked 2,000 DJTX to become a validator, only 8000 DJTX
+  is the minimum of 3 million DJT and 5 times the amount the validator staked.
+  For example, if you staked 2,000 DJT to become a validator, only 8000 DJT
   can be delegated to your node total (not per delegator)
 
 A validator will receive a staking reward if they are online and response for
@@ -77,8 +77,8 @@ your node's true uptime.
 
 On Dijets Testnet, all staking parameters are the same as those on Mainnet except the following ones:
 
-- The minimum amount that a validator must stake is 1 DJTX
-- The minimum amount that a delegator must delegate is 1 DJTX
+- The minimum amount that a validator must stake is 1 DJT
+- The minimum amount that a delegator must delegate is 1 DJT
 - The minimum amount of time one can stake funds for validation is 24 hours
 - The minimum amount of time one can stake funds for delegation is 24 hours
 
@@ -92,12 +92,12 @@ When you add a node to the validator set, you specify:
 
 - Your node’s ID
 - When you want to start and stop validating
-- How many DJTX you are staking
+- How many DJT you are staking
 - The address to send any rewards to
 - Your delegation fee rate (see below)
 
 <Admonition type="info">
-The minimum amount that a validator must stake is 2,000 DJTX.
+The minimum amount that a validator must stake is 2,000 DJT.
 </Admonition>
 
 <Admonition type="caution">
@@ -162,7 +162,7 @@ should back up this file (and `staker.crt`) somewhere secure. Losing your
 Staking Key could jeopardize your validation reward, as your node will have a
 new ID.
 
-You do not need to have DJTX funds on your validating node. In fact, it's best
+You do not need to have DJT funds on your validating node. In fact, it's best
 practice to **not** have a lot of funds on your node. Almost all of your funds
 should be in "cold" addresses whose private key is not on any computer.
 
@@ -175,11 +175,11 @@ When you delegate stake to a validator, you specify:
 
 - The ID of the node you’re delegating to
 - When you want to start/stop delegating stake (must be while the validator is validating)
-- How many DJTX you are staking
+- How many DJT you are staking
 - The address to send any rewards to
 
 <Admonition type="info">
-The minimum amount that a delegator must delegate is 25 DJTX.
+The minimum amount that a delegator must delegate is 25 DJT.
 </Admonition>
 
 <Admonition type="caution">

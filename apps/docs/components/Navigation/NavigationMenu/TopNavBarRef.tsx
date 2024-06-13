@@ -43,14 +43,14 @@ const TopNavBarRef: FC = () => {
   }
 
   return (
-    <nav className="h-[60px] border-b backdrop-blur backdrop-filter bg-white-1200 dark:bg-scale-200/90">
+    <nav className="h-[68px] border-b backdrop-blur backdrop-filter bg-white-1200 dark:border-[#2c2c2c7a] dark:bg-scale-200/90">
       <div className="px-5 max-w-7xl mx-auto flex gap-3 justify-between items-center h-full">
         <div className={['lg:hidden'].join(' ')}>
           <Link href="/">
             <a className=" flex items-center gap-2">
               <Image
                 className="cursor-pointer"
-                src={isDarkMode ? '/docs/dijets-dark.svg' : '/docs/dijets-light.svg'}
+                src={isDarkMode ? 'https://whitelist.dijets.io/dijets-dark.svg' : 'https://whitelist.dijets.io/dijets-light.svg'}
                 width={96}
                 height={24}
                 alt="Dijets Logo"
@@ -70,21 +70,23 @@ const TopNavBarRef: FC = () => {
               items-center
               justify-between
               bg-scaleA-200
+              dark:bg-[#00000042]
               border
               transition
               hover:border-scale-600
               hover:bg-scaleA-300
-              border-scale-500 pl-1.5 md:pl-3 pr-1.5 w-full h-[32px] rounded"
+              dark:border-[#1f1f1f]
+              border-scale-500 pl-2 md:pl-3 pr-2 w-full h-[40px] rounded"
             >
               <div className="flex items-center space-x-2">
                 <IconHal />
-                <p className="hidden md:flex text-[#8585857d] text-[0.7em] tracking-[0.04em] group-hover:text-[#858585b8] transition">
-                  ASK HAL ANYTHING ABOUT DIJETS...
+                <p className="hidden md:flex text-[#8585857d] text-[0.8em] tracking-[0.01em] group-hover:text-[#858585b8] transition !ml-4">
+                  Documentation Help & Quicklinks
                 </p>
               </div>
               <div className="hidden md:flex items-center space-x-1">
-                <div className="text-[#858585b8] md:flex items-center justify-center h-5 w-10 border rounded bg-scale-500 border-scale-700 gap-1">
-                  <IconCommand size={12} strokeWidth={1.5} />
+                <div className="text-[#858585b8] md:flex items-center justify-center h-5 w-10 border rounded-md dark:border-[#1d1d1d] dark:bg-[#000000] bg-scale-500 border-scale-700 gap-1">
+                  <IconCommand size={12} strokeWidth={2} />
                   <span className="text-[11px] text-[#858585b8]">K</span>
                 </div>
               </div>

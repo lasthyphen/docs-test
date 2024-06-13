@@ -6,7 +6,7 @@ export const meta = {
   description: 'The Value Chain is an instance of Dijets Virtual Machine for creating smart digital assets.',
 }
 
-The [Value Chain](/docs/guides/getting-started/introduction#value) is
+The [Value Chain](/guides/getting-started/introduction#value) is
 Dijets native chain and platform for creating and trading smart digital assets. It is an instance of Dijets Virtual
 Machine (DVM). This API allows clients to create and trade assets on the Value Chain and on other instances
 of Dijets Virtual Machine.
@@ -18,7 +18,7 @@ The Value Chain API uses the standard `json 2.0` RPC format. For more informatio
 
 ## Endpoints
 
-`/ext/bc/X` to interact with the Value Chain.
+`/ext/bc/V` to interact with the Value Chain.
 
 `/ext/bc/blockchainID` to interact with other Dijets Virtual Machine instances, where `blockchainID` is the ID of a
 blockchain running the VM.
@@ -210,7 +210,7 @@ curl -X POST --data '{
         "password": "myPassword"
     },
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -297,7 +297,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -379,7 +379,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -474,7 +474,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -498,7 +498,7 @@ Not recommended for use on Mainnet. See warning notice in [Keystore API](keystor
 
 Send an asset from the Value Chain to the Method Chain or Utility Chain. After calling this method, you must call
 the [Utility Chain's `djtx.import`](utility-chain-api#djtximport) or the [Method Chain's
-`platform.importDJTX`](method-chain-api#platformimportdjtx) to complete the transfer.
+`platform.importDJT`](method-chain-api#platformimportdjtx) to complete the transfer.
 
 **Signature:**
 
@@ -520,7 +520,7 @@ avm.export({
 
 - `to` is the Method Chain or Utility Chain address the asset is sent to.
 - `amount` is the amount of the asset to send.
-- `assetID` is the asset id of the asset which is sent. Use `DJTX` for DJTX exports.
+- `assetID` is the asset id of the asset which is sent. Use `DJT` for DJT exports.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
   addresses as needed.
 - `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the
@@ -541,13 +541,13 @@ curl -X POST --data '{
     "params" :{
         "to":"C-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
         "amount": 10,
-        "assetID": "DJTX",
+        "assetID": "DJT",
         "from":["X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
         "changeAddr":"X-dijets1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -597,7 +597,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "address":"X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -659,10 +659,10 @@ curl -X POST --data '{
   "method" :"avm.getAddressTxs",
   "params" :{
       "address":"X-local1kpprmfpzzm5lxyene32f6lr7j0aj7gxsu6hp9y",
-      "assetID":"DJTX",
+      "assetID":"DJT",
       "pageSize":20
   }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -703,7 +703,7 @@ curl -X POST --data '{
     "params" :{
         "address":"X-dijets1c79e0dd0susp7dc8udq34jgk2yvve7hapvdyht"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -714,7 +714,7 @@ curl -X POST --data '{
   "result": {
     "balances": [
       {
-        "asset": "DJTX",
+        "asset": "DJT",
         "balance": "102"
       },
       {
@@ -760,7 +760,7 @@ curl -X POST --data '{
     "params" :{
         "assetID" :"wjcHr7ng1qPXeJm5Mh3HzQxqz2S9AGo9UVP78jxh5zfirZxY7"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -771,7 +771,7 @@ curl -X POST --data '{
     "result": {
         "assetID": "wjcHr7ng1qPXeJm5Mh3HzQxqz2S9AGo9UVP78jxh5zfirZxY7",
         "name": "Dijets",
-        "symbol": "DJTX",
+        "symbol": "DJT",
         "denomination": "9"
     },
     "id": 1
@@ -805,7 +805,7 @@ curl -X POST --data '{
       "address":"X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "assetID": "2pYGetDWyKdHxpFxh2LHeoLNCH6H5vxxCxHQtFnnFaYxLsqtHC"
   }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -855,7 +855,7 @@ curl -X POST --data '{
         "txID":"KMcVWV1dJAuWQXfrJgNFFr9uPHqXELQNZoFWoosYVqQV5qGj5",
         "encoding": "json"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -983,7 +983,7 @@ curl -X POST --data '{
     "params" :{
         "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1054,7 +1054,7 @@ curl -X POST --data '{
         "limit":5,
         "encoding": "hex"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 This gives response:
@@ -1098,7 +1098,7 @@ curl -X POST --data '{
         },
         "encoding": "hex"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 This gives response:
@@ -1142,7 +1142,7 @@ curl -X POST --data '{
         "sourceChain": "P",
         "encoding": "hex"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 This gives response:
@@ -1172,7 +1172,7 @@ Not recommended for use on Mainnet. See warning notice in [Keystore API](keystor
 </Admonition>
 
 Finalize a transfer of an asset from the Method Chain or Utility Chain to the Value Chain. Before this method is
-called, you must call the Method Chain’s [`platform.exportDJTX`](method-chain-api#platformexportdjtx) or
+called, you must call the Method Chain’s [`platform.exportDJT`](method-chain-api#platformexportdjtx) or
 Utility Chain’s [`djtx.export`](utility-chain-api#djtxexport) method to initiate the transfer.
 
 **Signature:**
@@ -1186,9 +1186,9 @@ avm.import({
 }) -> {txID: string}
 ```
 
-- `to` is the address the DJTX is sent to. This must be the same as the `to` argument in the
-  corresponding call to the Method Chain’s `exportDJTX` or Utility Chain's `export`.
-- `sourceChain` is the ID or alias of the chain the DJTX is being imported from. To import funds
+- `to` is the address the DJT is sent to. This must be the same as the `to` argument in the
+  corresponding call to the Method Chain’s `exportDJT` or Utility Chain's `export`.
+- `sourceChain` is the ID or alias of the chain the DJT is being imported from. To import funds
   from the Utility Chain, use `"C"`.
 - `username` is the user that controls `to`.
 - `txID` is the ID of the newly created atomic transaction.
@@ -1206,7 +1206,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1254,7 +1254,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1296,7 +1296,7 @@ curl -X POST --data '{
         "tx":"0x00000009de31b4d8b22991d51aa6aa1fc733f23a851a8c9400000000000186a0000000005f041280000000005f9ca900000030390000000000000001fceda8f90fcb5d30614b99d79fc4baa29307762668f16eb0259a57c2d3b78c875c86ec2045792d4df2d926c40f829196e0bb97ee697af71f5b0a966dabff749634c8b729855e937715b0e44303fd1014daedc752006011b730",
         "encoding": "hex"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1339,7 +1339,7 @@ curl -X POST --data '{
         "password":"myPassword"
     },
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1408,7 +1408,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1484,7 +1484,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1524,7 +1524,7 @@ avm.send({
 ```
 
 - Sends `amount` units of asset with ID `assetID` to address `to`. `amount` is denominated in the
-  smallest increment of the asset. For DJTX this is 1 nDJTX (one billionth of 1 DJTX.)
+  smallest increment of the asset. For DJT this is 1 nDJT (one billionth of 1 DJT.)
 - `to` is the Value Chain address the asset is sent to.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
   addresses as needed.
@@ -1542,7 +1542,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "assetID"   : "DJTX",
+        "assetID"   : "DJT",
         "amount"    : 10000,
         "to"        : "X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
         "from"      : ["X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
@@ -1551,7 +1551,7 @@ curl -X POST --data '{
         "username"  : "userNameTest",
         "password"  : "myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1612,7 +1612,7 @@ curl -X POST --data '{
     "params" :{
         "outputs": [
             {
-                "assetID" : "DJTX",
+                "assetID" : "DJT",
                 "to"      : "X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
                 "amount"  : 1000000000
             },
@@ -1628,7 +1628,7 @@ curl -X POST --data '{
         "username"  : "username",
         "password"  : "myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1692,7 +1692,7 @@ curl -X POST --data '{
         "username"  : "myUsername",
         "password"  : "myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V
 ```
 
 **Example Response:**
@@ -1715,7 +1715,7 @@ the format of the signed transaction. Can only be `hex` when a value is provided
 
 This call is made to the wallet API endpoint:
 
-`/ext/bc/X/wallet`
+`/ext/bc/V/wallet`
 
 **Signature:**
 
@@ -1739,7 +1739,7 @@ curl -X POST --data '{
         "tx":"0x00000009de31b4d8b22991d51aa6aa1fc733f23a851a8c9400000000000186a0000000005f041280000000005f9ca900000030390000000000000001fceda8f90fcb5d30614b99d79fc4baa29307762668f16eb0259a57c2d3b78c875c86ec2045792d4df2d926c40f829196e0bb97ee697af71f5b0a966dabff749634c8b729855e937715b0e44303fd1014daedc752006011b730",
         "encoding": "hex"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V/wallet
 ```
 
 **Example Response:**
@@ -1765,7 +1765,7 @@ can use the modified UTXO set.
 
 This call is made to the wallet API endpoint:
 
-`/ext/bc/X/wallet`
+`/ext/bc/V/wallet`
 
 **Signature:**
 
@@ -1783,7 +1783,7 @@ wallet.send({
 ```
 
 - Sends `amount` units of asset with ID `assetID` to address `to`. `amount` is denominated in the
-  smallest increment of the asset. For DJTX this is 1 nDJTX (one billionth of 1 DJTX.)
+  smallest increment of the asset. For DJT this is 1 nDJT (one billionth of 1 DJT.)
 - `to` is the Value Chain address the asset is sent to.
 - `from` are the addresses that you want to use for this operation. If omitted, uses any of your
   addresses as needed.
@@ -1801,7 +1801,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"wallet.send",
     "params" :{
-        "assetID"   : "DJTX",
+        "assetID"   : "DJT",
         "amount"    : 10000,
         "to"        : "X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
         "memo"      : "penXenOleFren",
@@ -1810,7 +1810,7 @@ curl -X POST --data '{
         "username"  : "userThatControlsAtLeast10000OfThisAsset",
         "password"  : "myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V/wallet
 ```
 
 **Example Response:**
@@ -1837,7 +1837,7 @@ addresses and assume the TX will be accepted so that future calls can use the mo
 
 This call is made to the wallet API endpoint:
 
-`/ext/bc/X/wallet`
+`/ext/bc/V/wallet`
 
 **Signature:**
 
@@ -1875,7 +1875,7 @@ curl -X POST --data '{
     "params" :{
         "outputs": [
             {
-                "assetID" : "DJTX",
+                "assetID" : "DJT",
                 "to"      : "X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
                 "amount"  : 1000000000
             },
@@ -1891,7 +1891,7 @@ curl -X POST --data '{
         "username"  : "username",
         "password"  : "myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/V/wallet
 ```
 
 **Example Response:**
@@ -1913,7 +1913,7 @@ Listen for transactions on a specified address.
 
 This call is made to the events API endpoint:
 
-`/ext/bc/X/events`
+`/ext/bc/V/events`
 
 #### **Golang Example**
 
@@ -1940,7 +1940,7 @@ func main() {
     }
 
     httpHeader := http.Header{}
-    conn, _, err := dialer.Dial("ws://localhost:9650/ext/bc/X/events", httpHeader)
+    conn, _, err := dialer.Dial("ws://localhost:9650/ext/bc/V/events", httpHeader)
     if err != nil {
         panic(err)
     }

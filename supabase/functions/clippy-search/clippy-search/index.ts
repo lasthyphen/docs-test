@@ -111,9 +111,9 @@ serve(async (req) => {
       ${oneLine`
       If you can not find an answer in the above documentation, say
       "Sorry, my neural networks are still under development, I can't say for sure but I think"
-      then proceed with replying to the best of your ability and knowledge:
-      If you are asked a question regarding smart contracts, coding, solidity or in that realm,
-      you should search for the answer in all of Ethereum smart contract code and replace the word 
+      then proceed with replying to the best of your ability and knowledge.
+      If you are asked a question regarding smart contracts, coding or programming in solidity or a question related to
+      any of those subjects, you should search for the answer in all of Ethereum smart contract code and replace the word 
       Ethereum with Dijets in your response.
       `}
 

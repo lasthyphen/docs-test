@@ -14,16 +14,16 @@ export const meta = {
 
 1. You have completed the tutorial for "How to run a Dijets Node"
 
-1. You have completed the tutorial for ["Create a Local Dijets Network"](create-local-network)
+1. You have completed the tutorial for ["Create a Local Dijets Network"](/guides/getting-started/tutorials/create-local-network)
 
-1. You have Go language installed on your system with $GOBIN set to be [in your path.](/docs/guides/getting-started/tutorials/funding-test-accounts#setting-bin-in-your-path)
+1. You have Go language installed on your system with $GOBIN set to be [in your path.](/guides/getting-started/tutorials/funding-test-accounts#setting-bin-in-your-path)
 
 
 # Fund a Local Test Network
 
 ## Introduction
 
-In [Create a Local Test Network](create-local-network), you learnt
+In [Create a Local Test Network](/guides/getting-started/tutorials/create-local-network), you learnt
 how to launch a 5 node local test network. Once you have a local network the
 next step is to fund an address so that you can begin creating transactions and
 interacting with smart-contracts on the said network.
@@ -34,7 +34,7 @@ This guide will show you how to leverage a pre-funded private key to access fund
 
 This private key,
 `PrivateKey-ewoqjP7PxY4yr3iLTpLisriqt94hdyDFNgchSxGGztUrTXtNN`, can be used to
-sign transactions locally using [DijetsJS](../getting-started/tutorials//README.md).
+sign transactions locally using [DijetsJS](/guides/dijetsjs).
 You don't need to import the key into the local keystore in order to access
 those funds. They are in the genesis vertex and block for each respective chain.
 
@@ -113,7 +113,7 @@ You can import the prefunded `PrivateKey-ewoqjP7PxY4yr3iLTpLisriqt94hdyDFNgchSxG
 the [avm.importKey API](#avmimportkey).
 
 ```text
-curl --location --request POST '127.0.0.1:9650/ext/bc/X' \
+curl --location --request POST '127.0.0.1:9650/ext/bc/V' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "jsonrpc":"2.0",
@@ -144,10 +144,10 @@ curl --location --request POST '127.0.0.1:9650/ext/bc/X' \
 ### Check the Value Chain Balance
 
 Confirm that the `X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p` address now has a
-balance of 300m DJTX on the Value Chain.
+balance of 300m DJT on the Value Chain.
 
 ```text
-curl --location --request POST '127.0.0.1:9650/ext/bc/X' \
+curl --location --request POST '127.0.0.1:9650/ext/bc/V' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "jsonrpc":"2.0",
@@ -155,7 +155,7 @@ curl --location --request POST '127.0.0.1:9650/ext/bc/X' \
   "method" :"avm.getBalance",
   "params" :{
       "address":"X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p",
-      "assetID": "DJTX"
+      "assetID": "DJT"
   }
 } '
 ```
@@ -185,13 +185,13 @@ curl --location --request POST '127.0.0.1:9650/ext/bc/X' \
 ### Import Key
 
 You can import the prefunded `PrivateKey-ewoqjP7PxY4yr3iLTpLisriqt94hdyDFNgchSxGGztUrTXtNN` into the Utility Chain by calling 
-the [djtx.importKey API](#avmimportkey).
+the [djt.importKey API](#avmimportkey).
 
 ```text
-curl --location --request POST '127.0.0.1:9650/ext/bc/C/djtx' \
+curl --location --request POST '127.0.0.1:9650/ext/bc/C/djt' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "method": "djtx.importKey",
+    "method": "djt.importKey",
     "params": {
         "username": "PenXenOleFren",
         "password": "password",
@@ -219,7 +219,7 @@ curl --location --request POST '127.0.0.1:9650/ext/bc/C/djtx' \
 ### Check the Utility Chain Balance
 
 Confirm the `0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC` address has a balance
-of 50m (0x295be96e64066972000000 in hex) DJTX on the Utility Chain.
+of 50m (0x295be96e64066972000000 in hex) DJT on the Utility Chain.
 
 ```text
 curl --location --request POST 'localhost:9650/ext/bc/C/rpc' \
@@ -256,7 +256,7 @@ To see this account on MetaMask, follow these steps:
   - **Network Name**: Dijets Local UC
   - **New RPC URL**: [http://127.0.0.1:9650/ext/bc/C/rpc](http://127.0.0.1:9650/ext/bc/C/rpc)
   - **ChainID**: `90901`
-  - **Symbol**: `DJTX`
+  - **Symbol**: `DJT`
 
 - Create a new account by importing the private key
   `0x56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` on
@@ -308,7 +308,7 @@ curl --location --request POST '127.0.0.1:9650/ext/bc/P' \
 ### Check Method Chain Balance
 
 Confirm the `P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p` address has a
-balance of 30m DJTX on the Method Chain. 20m should be unlocked and 10m locked and
+balance of 30m DJT on the Method Chain. 20m should be unlocked and 10m locked and
 stakeable.
 
 ```text

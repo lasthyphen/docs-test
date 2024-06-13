@@ -21,4 +21,25 @@ module.exports = config({
       })
     },
   ],
+  theme: {
+    extend: {
+      keyframes: {
+        'animate-mask': {
+          "0%": {WebkitMaskPosition: "0 0"},
+          "100%": {WebkitMaskPosition: "1000px 1000px"}
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
+      },
+      animation: {
+        'animate-mask': 'animate-mask 60s linear infinite',
+      },
+    },
+  },
 })

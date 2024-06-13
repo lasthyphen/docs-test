@@ -37,7 +37,6 @@ const questions = [
   'How can I run a Dijets Node?',
   'How do I run a test network with Dijets?',
   'How can I make an ERC20 token with Dijets?',
-  'How to make an NFT Token with Dijets? ',
   'How can I connect Metamask with Dijets?',
   'Whats an ECC?',
 ]
@@ -60,8 +59,7 @@ function getEdgeFunctionUrl() {
   const isPlatform = supabaseUrl.match(/(supabase\.co)|(supabase\.in)/)
 
   if (isPlatform) {
-    const [schemeAndProjectId, domain, tld] = supabaseUrl.split('.')
-    return `${schemeAndProjectId}.functions.${domain}.${tld}`
+    return `${supabaseUrl}/functions/v1`
   } else {
     return `${supabaseUrl}/functions/v1`
   }
@@ -421,8 +419,8 @@ const AiCommand = () => {
                           linkTarget="_blank"
                           className="prose dark:prose-dark"
                           transformLinkUri={(href) => {
-                            const supabaseUrl = new URL('https://supabase.com')
-                            const linkUrl = new URL(href, 'https://supabase.com')
+                            const supabaseUrl = new URL('https://umexikobollkzsqjioex.supabase.co')
+                            const linkUrl = new URL(href, 'https://dev.dijets.io')
 
                             if (linkUrl.origin === supabaseUrl.origin) {
                               return linkUrl.toString()
@@ -467,7 +465,7 @@ const AiCommand = () => {
           <div className="p-6 flex flex-col items-center gap-6 mt-4">
             <IconAlertTriangle className="text-amber-900" strokeWidth={1.5} size={21} />
             <p className="text-lg text-scale-1200 text-center">
-              Sorry, looks like Clippy is having a hard time!
+              Sorry, looks like HAL is having a hard time!
             </p>
             <p className="text-sm text-scale-900 text-center">Please try again in a bit.</p>
             <Button size="tiny" type="secondary" onClick={handleReset}>
@@ -481,7 +479,7 @@ const AiCommand = () => {
       <div className="absolute bottom-0 w-full bg-scale-200 py-3">
         {messages.length > 0 && !hasError && <AiWarning className="mb-3 mx-3" />}
         <Input
-          className="bg-scale-100 rounded mx-3 [&_input]:pr-32 md:[&_input]:pr-40"
+          className="bg-scale-100 dark:bg-[#000000] rounded mx-3 [&_input]:pr-32 md:[&_input]:pr-40"
           inputRef={inputRef}
           autoFocus
           placeholder={

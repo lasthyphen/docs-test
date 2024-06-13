@@ -96,7 +96,7 @@ import HomeLayout from '~/layouts/HomeLayout'
                     <Button
                       type="secondary"
                       icon={
-                        <SVG src={`${router.basePath}/img/qowalts-icon.svg`} className="h-4 w-4" />
+                        <Image src={`${router.basePath}/img/qowalts-icon.svg`} alt="" className="h-4 w-4" />
                       }
                     >
                       <span style={{ color: '#404EED' }}>Join us on Qowalts</span>

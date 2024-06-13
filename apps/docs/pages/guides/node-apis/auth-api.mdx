@@ -17,7 +17,7 @@ An authorization token is provided in the header of an API call. Specifically, t
 the token).
 
 This API is only reachable if the node is started with [config
-flag](../../../nodes/maintain/dijetsnodego-config-flags.md)`--api-auth-required`. If the node is
+flag](../../..//docs/guides/nodes/node-flags-configs)`--api-auth-required`. If the node is
 started without this CLI, API calls do not require authorization tokens, so this API is not
 reachable. This API never requires an authorization token to be reached.
 
@@ -76,13 +76,13 @@ curl -X POST --data '{
     "method": "auth.newToken",
     "params":{
         "password":"YOUR PASSWORD GOES HERE",
-        "endpoints":["/ext/bc/X", "/ext/info"]
+        "endpoints":["/ext/bc/V", "/ext/info"]
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/auth
 ```
 
-This call will generate an authorization token that allows access to API endpoints `/ext/bc/X` 
+This call will generate an authorization token that allows access to API endpoints `/ext/bc/V` 
 (that is the Value Chain) and `/ext/info` (that is the [info API](info-api).)
 
 **Example Response:**

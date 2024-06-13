@@ -36,7 +36,7 @@ Wallets like Decypher and MetaMask will automatically do that for you.
 ## Keywords and Concepts
 
 The amount of computation used by a transaction is measured in units of `gas`.
-Each unit of gas is paid for in DJTX at the `gas price` for the transaction. The
+Each unit of gas is paid for in DJT at the `gas price` for the transaction. The
 `gas price` of the transaction is determined by the parameters of the
 transaction and the `base fee` of the block that it is included in.
 
@@ -102,7 +102,7 @@ the `base fee` of the block is known as the `effective gas tip`.
 EffectiveTip = min(MaxFeeCap - BaseFee, GasTipCap)
 ```
 
-Consider the following examples (here Gwei or nDJTX equates to one-billionth of 1 DJTX)
+Consider the following examples (here Gwei or nDJT equates to one-billionth of 1 DJT)
 
 | Transaction | Max Fee Cap | Gas tip cap | Base price | Effective tip | Total price |
 | ----------- | ----------- | ----------- | ---------- | ------------- | ----------- |
@@ -123,7 +123,7 @@ prioritise transaction A since thats the transaction thats willing to pay an hig
 
 If your transaction is failing and giving an error - `transaction underpriced`,
 then the max fee cap of your transaction must be less than the minimum base
-price that the network supports (as of now, it's 25 nDJTX or Gwei). Although the
+price that the network supports (as of now, it's 25 nDJT or Gwei). Although the
 base fee is automatically estimated in wallets like MetaMask, you can try
 increasing the max fee cap in the wallet.
 
@@ -149,7 +149,7 @@ there is heavy congestion on the network, and the base fees are frequently
 fluctuating.
 
 1. Let's create a sample transaction on Dijets Mainnet, in which we will be
-   sending 0.1 DJTX to a receiver using the MetaMask. By clicking **Next** we
+   sending 0.1 DJT to a receiver using the MetaMask. By clicking **Next** we
    can review gas fees and the amount which we want to send.
 
 1. On the review page, you can see the estimated priority and max fee for this
@@ -164,7 +164,7 @@ fluctuating.
 
 1. If the network activity is high, you have to edit the priority and max fees
    accordingly, as shown on Dijets Utility Chain Explorer. Consider the example below, where the
-   average max fee is 31.25 Gwei (nDJTX).
+   average max fee is 31.25 Gwei (nDJT).
 
    ![Dijets Utility Chain Gas Tracker](/docs/img/gas-tracker.png)
 

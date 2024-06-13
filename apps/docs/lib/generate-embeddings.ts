@@ -3,17 +3,20 @@ import { createHash } from 'crypto'
 import dotenv from 'dotenv'
 import { ObjectExpression } from 'estree'
 import { readdir, readFile, stat } from 'fs/promises'
+import GithubSlugger from 'github-slugger'
 import { Content, Root } from 'mdast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { mdxFromMarkdown, MdxjsEsm } from 'mdast-util-mdx'
 import { toMarkdown } from 'mdast-util-to-markdown'
+import { toString } from 'mdast-util-to-string'
 import { mdxjs } from 'micromark-extension-mdxjs'
 import 'openai'
 import { Configuration, OpenAIApi } from 'openai'
-import { join } from 'path'
+import { basename, dirname, join } from 'path'
 import { u } from 'unist-builder'
 import { filter } from 'unist-util-filter'
 import { inspect } from 'util'
+import yargs from 'yargs'
 
 dotenv.config()
 
@@ -105,10 +108,16 @@ function splitTreeBy(tree: Root, predicate: (node: Content) => boolean) {
 
 type Meta = ReturnType<typeof extractMetaExport>
 
+type Section = {
+  content: string
+  heading?: string
+  slug?: string
+}
+
 type ProcessedMdx = {
   checksum: string
   meta: Meta
-  sections: string[]
+  sections: Section[]
 }
 
 /**
@@ -149,7 +158,20 @@ function processMdxForSearch(content: string): ProcessedMdx {
 
   const sectionTrees = splitTreeBy(mdTree, (node) => node.type === 'heading')
 
-  const sections = sectionTrees.map((tree) => toMarkdown(tree))
+  const slugger = new GithubSlugger()
+
+  const sections = sectionTrees.map((tree) => {
+    const [firstNode] = tree.children
+
+    const heading = firstNode.type === 'heading' ? toString(firstNode) : undefined
+    const slug = heading ? slugger.slug(heading) : undefined
+
+    return {
+      content: toMarkdown(tree),
+      heading,
+      slug,
+    }
+  })
 
   return {
     checksum,
@@ -158,17 +180,33 @@ function processMdxForSearch(content: string): ProcessedMdx {
   }
 }
 
-async function walk(dir: string): Promise<string[]> {
+type WalkEntry = {
+  path: string
+  parentPath?: string
+}
+
+async function walk(dir: string, parentPath?: string): Promise<WalkEntry[]> {
   const immediateFiles = await readdir(dir)
 
   const recursiveFiles = await Promise.all(
     immediateFiles.map(async (file) => {
-      const filePath = join(dir, file)
-      const stats = await stat(filePath)
+      const path = join(dir, file)
+      const stats = await stat(path)
       if (stats.isDirectory()) {
-        return walk(filePath)
+        // Keep track of document hierarchy (if this dir has corresponding doc file)
+        const docPath = `${basename(path)}.mdx`
+
+        return walk(
+          path,
+          immediateFiles.includes(docPath) ? join(dirname(path), docPath) : parentPath
+        )
       } else if (stats.isFile()) {
-        return [filePath]
+        return [
+          {
+            path: path,
+            parentPath,
+          },
+        ]
       } else {
         return []
       }
@@ -180,10 +218,61 @@ async function walk(dir: string): Promise<string[]> {
     []
   )
 
-  return flattenedFiles
+  return flattenedFiles.sort((a, b) => a.path.localeCompare(b.path))
 }
 
+abstract class BaseEmbeddingSource {
+  checksum?: string
+  meta?: Meta
+  sections?: Section[]
+
+  constructor(public source: string, public path: string, public parentPath?: string) {}
+
+  abstract load(): Promise<{
+    checksum: string
+    meta?: Meta
+    sections: Section[]
+  }>
+}
+
+class MarkdownEmbeddingSource extends BaseEmbeddingSource {
+  type: 'markdown' = 'markdown'
+
+  constructor(source: string, public filePath: string, public parentFilePath?: string) {
+    const path = filePath.replace(/^pages/, '').replace(/\.mdx?$/, '')
+    const parentPath = parentFilePath?.replace(/^pages/, '').replace(/\.mdx?$/, '')
+
+    super(source, path, parentPath)
+  }
+
+  async load() {
+    const contents = await readFile(this.filePath, 'utf8')
+
+    const { checksum, meta, sections } = processMdxForSearch(contents)
+
+    this.checksum = checksum
+    this.meta = meta
+    this.sections = sections
+
+    return {
+      checksum,
+      meta,
+      sections,
+    }
+  }
+}
+
+type EmbeddingSource = MarkdownEmbeddingSource
+
 async function generateEmbeddings() {
+  const argv = await yargs.option('refresh', {
+    alias: 'r',
+    description: 'Refresh data',
+    type: 'boolean',
+  }).argv
+
+  const shouldRefresh = argv.refresh
+
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     !process.env.SUPABASE_SERVICE_ROLE_KEY ||
@@ -196,27 +285,40 @@ async function generateEmbeddings() {
 
   const supabaseClient = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    }
   )
 
-  const markdownFiles = (await walk('pages'))
-    .filter((fileName) => /\.mdx?$/.test(fileName))
-    .filter((fileName) => !ignoredFiles.includes(fileName))
+  const embeddingSources: EmbeddingSource[] = [
+    ...(await walk('pages'))
+      .filter(({ path }) => /\.mdx?$/.test(path))
+      .filter(({ path }) => !ignoredFiles.includes(path))
+      .map((entry) => new MarkdownEmbeddingSource('guide', entry.path)),
+  ]
 
-  console.log(`Discovered ${markdownFiles.length} pages`)
-  console.log('Checking which pages are new or have changed')
+  console.log(`Discovered ${embeddingSources.length} pages`)
 
-  for (const markdownFile of markdownFiles) {
-    const path = markdownFile.replace(/^pages/, '').replace(/\.mdx?$/, '')
+  if (!shouldRefresh) {
+    console.log('Checking which pages are new or have changed')
+  } else {
+    console.log('Refresh flag set, re-generating all pages')
+  }
+
+  for (const embeddingSource of embeddingSources) {
+    const { type, source, path, parentPath } = embeddingSource
+
     try {
-      const contents = await readFile(markdownFile, 'utf8')
-
-      const { checksum, meta, sections } = processMdxForSearch(contents)
+      const { checksum, meta, sections } = await embeddingSource.load()
 
       // Check for existing page in DB and compare checksums
       const { error: fetchPageError, data: existingPage } = await supabaseClient
-        .from('page')
-        .select()
+        .from('nods_page')
+        .select('id, path, checksum, parentPage:parent_page_id(id, path)')
         .filter('path', 'eq', path)
         .limit(1)
         .maybeSingle()
@@ -225,20 +327,51 @@ async function generateEmbeddings() {
         throw fetchPageError
       }
 
+      type Singular<T> = T extends any[] ? undefined : T
+
       // We use checksum to determine if this page & its sections need to be regenerated
-      if (existingPage?.checksum === checksum) {
+      if (!shouldRefresh && existingPage?.checksum === checksum) {
+        const existingParentPage = existingPage?.parentPage as Singular<
+          typeof existingPage.parentPage
+        >
+
+        // If parent page changed, update it
+        if (existingParentPage?.path !== parentPath) {
+          console.log(`[${path}] Parent page has changed. Updating to '${parentPath}'...`)
+          const { error: fetchParentPageError, data: parentPage } = await supabaseClient
+            .from('nods_page')
+            .select()
+            .filter('path', 'eq', parentPath)
+            .limit(1)
+            .maybeSingle()
+
+          if (fetchParentPageError) {
+            throw fetchParentPageError
+          }
+
+          const { error: updatePageError } = await supabaseClient
+            .from('nods_page')
+            .update({ parent_page_id: parentPage?.id })
+            .filter('id', 'eq', existingPage.id)
+
+          if (updatePageError) {
+            throw updatePageError
+          }
+        }
         continue
       }
 
-      console.log({ checksum, path, meta })
-
       if (existingPage) {
-        console.log(
-          `Docs have changed for '${path}', removing old page sections and their embeddings`
-        )
+        if (!shouldRefresh) {
+          console.log(
+            `[${path}] Docs have changed, removing old page sections and their embeddings`
+          )
+        } else {
+          console.log(`[${path}] Refresh flag set, removing old page sections and their embeddings`)
+        }
 
         const { error: deletePageSectionError } = await supabaseClient
-          .from('page_section')
+          .from('nods_page_section')
           .delete()
           .filter('page_id', 'eq', existingPage.id)
 
@@ -247,11 +380,32 @@ async function generateEmbeddings() {
         }
       }
 
+      const { error: fetchParentPageError, data: parentPage } = await supabaseClient
+        .from('nods_page')
+        .select()
+        .filter('path', 'eq', parentPath)
+        .limit(1)
+        .maybeSingle()
+
+      if (fetchParentPageError) {
+        throw fetchParentPageError
+      }
+
       // Create/update page record. Intentionally clear checksum until we
       // have successfully generated all page sections.
       const { error: upsertPageError, data: page } = await supabaseClient
-        .from('page')
-        .upsert({ checksum: null, path, meta }, { onConflict: 'path' })
+        .from('nods_page')
+        .upsert(
+          {
+            checksum: null,
+            path,
+            type,
+            source,
+            meta,
+            parent_page_id: parentPage?.id,
+          },
+          { onConflict: 'path' }
+        )
         .select()
         .limit(1)
         .single()
@@ -260,13 +414,15 @@ async function generateEmbeddings() {
         throw upsertPageError
       }
 
-      console.log(`Adding ${sections.length} page sections (with embeddings) for '${path}'`)
-      for (const section of sections) {
+      console.log(`[${path}] Adding ${sections.length} page sections (with embeddings)`)
+      for (const { slug, heading, content } of sections) {
         // OpenAI recommends replacing newlines with spaces for best results (specific to embeddings)
-        const input = section.replace(/\n/g, ' ')
+        const input = content.replace(/\n/g, ' ')
 
         try {
-          const configuration = new Configuration({ apiKey: process.env.OPENAI_KEY })
+          const configuration = new Configuration({
+            apiKey: process.env.OPENAI_KEY,
+          })
           const openai = new OpenAIApi(configuration)
 
           const embeddingResponse = await openai.createEmbedding({
@@ -281,10 +437,12 @@ async function generateEmbeddings() {
           const [responseData] = embeddingResponse.data.data
 
           const { error: insertPageSectionError, data: pageSection } = await supabaseClient
-            .from('page_section')
+            .from('nods_page_section')
             .insert({
               page_id: page.id,
-              content: section,
+              slug,
+              heading,
+              content,
               token_count: embeddingResponse.data.usage.total_tokens,
               embedding: responseData.embedding,
             })
@@ -310,7 +468,7 @@ async function generateEmbeddings() {
 
       // Set page checksum so that we know this page was stored successfully
       const { error: updatePageError } = await supabaseClient
-        .from('page')
+        .from('nods_page')
         .update({ checksum })
         .filter('id', 'eq', page.id)
 

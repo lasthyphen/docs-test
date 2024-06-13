@@ -63,7 +63,7 @@ mkdir truffle; cd truffle
 
 Use `npm` to install [web3](https://web3js.readthedocs.io), which is a library
 through which we can talk to the EVM and
-[DijetsJS](/docs/guides/dijetsjs) which is used for cross chain
+[DijetsJS](/guides/dijetsjs) which is used for cross chain
 swaps.
 
 ```text
@@ -213,7 +213,7 @@ When deploying smart contracts to the Utility Chain, truffle will default to the
 available account provided by your Utility Chain client as the `from` address used
 during migrations. We have added some pre-defined private keys as our accounts
 in the `truffle-config.json`. The first and default account should have some
-pre-funded DJTX.
+pre-funded DJT.
 
 ### Truffle Accounts
 
@@ -261,7 +261,7 @@ Notice that `accounts[0]` (default account) has some balance, while `accounts[1]
 
 ### Fund Your Account
 
-You'll to have a minimum of `0.15` DJTX unlocked in your account to cover the cost
+You'll to have a minimum of `0.15` DJT unlocked in your account to cover the cost
 of contract deployments.
 
 ### Personal APIs
@@ -273,8 +273,8 @@ etc... However this API is disabled by default. It can be activated with
 support activating this API. So if you want to use these features you need to
 run your own network manually with `internal-private-personal` API enabled via
 the `eth-apis` flag. See [Create a Local Test
-Network/Manually](../../quickstart/create-a-local-test-network.md#manually) and
-[Utility Chain Configs](/docs/guides/node-flags-configs#utility-chain-configs).
+Network/Manually](/guides/quickstart/create-a-local-test-network.md#manually) and
+[Utility Chain Configs](/guides/nodes/node-flags-configs#utility-chain-configs).
 
 ## Run Migrations
 

@@ -14,7 +14,7 @@ const NavigationMenuHome = () => {
 
   return (
     <div className="transition-all duration-150 ease-out opacity-100 ml-0 delay-150">
-      <ul className="relative w-full flex flex-col gap-4 pb-5">
+      <ul className="relative w-full flex flex-col gap-[1.3rem] pb-5">
         {HOMEPAGE_MENU_ITEMS.map((section, sectionIndex) => {
           return (
             <Fragment key={`section-container-${sectionIndex}-border`}>
@@ -25,14 +25,14 @@ const NavigationMenuHome = () => {
                 ></div>
               )}
               <div key={`section-${sectionIndex}`}>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-[1.3rem]">
                   {section.map((link, i) => {
                     if (!link.href) {
                       return (
                         <div
                           key={link.label}
                           className={cn(
-                            'font-mono uppercase text-xs text-scale-900 ',
+                            'font-mono uppercase text-xs text-scale-900 tracking-[0.09rem]',
                             i !== 0 && 'mt-4'
                           )}
                         >

@@ -58,7 +58,7 @@ identity and state it had before. That being said, for your node's security,
 back up any private keys for staking, found in
 `$HOME/.dijetsnodego/staking` folder and store them somewhere secure. You can use those
 files to recreate your node on a different computer if you ever need to. Check
-out the tutorial on [Node Backup](node-backup-and-restore) for backup and
+out the tutorial on [Node Backup](/guides/nodes/node-backup-restore) for backup and
 restore procedure.
 
 ### Networking Considerations
@@ -239,7 +239,7 @@ configuration. But the script also enables various advanced options to be
 configured, via the command line prompts. Following is a list of advanced
 options and their usage:
 
-- `admin` - [Admin API](/docs/node-apis/admin-api) will be enabled
+- `admin` - [Admin API](/docs/guides/node-apis/admin-api) will be enabled
 - `archival` - disables database pruning and preserves the complete transaction history
 - `state-sync` - if `on` state-sync for the Utility Chain is used, if `off` it will
   use regular transaction replay to bootstrap; state-sync is much faster, but
@@ -247,7 +247,7 @@ options and their usage:
 - `db-dir` - used to provide the full path to the location where the database
   will be stored
 - `testnet` - node will connect to Dijets testnet instead of the Mainnet
-- `index` - [Index API](/docs/node-apis/index-api) will be
+- `index` - [Index API](/docs/guides/node-apis/index-api) will be
   enabled
 - `ip` - use `dynamic`, `static` arguments, of enter a desired IP directly to be
   used as the public IP node will advertise to the network
@@ -298,7 +298,7 @@ To use Utility Chain state-sync to quickly bootstrap a Mainnet node, with dynami
 File that configures node operation is `~/.dijetsnodego/configs/node.json`. You
 can edit it to add or change configuration options. The documentation of
 configuration options can be found
-[here](node-flags-configs). Configuration may look like
+[here](/guides/nodes/node-flags-configs). Configuration may look like
 this:
 
 ```json
@@ -315,7 +315,7 @@ like `--dynamic-public-ip=opendns` but as in the example above.
 Script also creates an empty Utility Chain config file, located at
 `~/.dijetsnodego/configs/chains/UC/config.json`. By editing that file you can
 configure the Utility Chain. Click
-[here](chain-config-flags) to read about the chain configuration for Utility Chain.
+[here](/guides/nodes/node-flags-configs) to read about the chain configuration for Utility Chain.
 
 
 ## What Next?
@@ -327,18 +327,18 @@ If you have any questions, or need help, feel free to contact us on Dijets publi
 [Qowalts](https://redirect.dijets.io/#/#dijets-support:dijets.org)
 
 Feel free to [interact with your
-node](node-apis/issuing-api-calls), [stake your
-dijets](staking), learn more about validators/delegators and how you can help
-secure the network and [earn DJTX](validator-nodes) or check your node's health by calling
-[Healthcheck APIs](health-api) to get a better
+node](/docs/guides/node-apis/issuing-api-calls), [stake your
+dijets](/guides/nodes/staking), learn more about validators/delegators and how you can help
+secure the network and [earn DJT](/guides/nodes/validator-nodes) or check your node's health by calling
+[Healthcheck APIs](/docs/guides/node-apis/health-api) to get a better
 insight into how your node is doing. 
 
 If you just want to issue commands to a Dijets Node and haven't gotten around to setting
 up your own node, you can always use our [Postman
-Collection](/docs/postman-api) to issue API calls directly through the postman app or in your browser.
+Collection](/docs/guides/postman-api) to issue API calls directly through the postman app or in your browser.
 
 Finally, if you haven't already, it is always good practice to [back
-up](node-backup-and-restore) your files in case of a major issue or if you plan on changing your host machine.
+up](/guides/nodes/node-backup-and-restore) your files in case of a major issue or if you plan on changing your host machine.
 
 export const Page = ({ children }) => <Layout meta={meta} children={children} />
 

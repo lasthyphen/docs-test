@@ -11,7 +11,7 @@ export const meta = {
 
 Dijets TestNet is the test network for Dijets. It can be used to test DApps
 and/or smart contracts after they've been developed and implemented locally. 
-(You can use [Dijets-Up](create-local-network) to test things locally.) Dijets TestNet is
+(You can use [Dijets-Up](/guides/getting-started/tutorials/create-local-network) to test things locally.) Dijets TestNet is
 typically running the same DijetsNodeGo version as  Dijets Mainnet, but sometimes it is
 also running an unreleased version. In general, you can expect Dijets TestNet's
 behavior to be about the same as Dijets Mainnet. Dijets Explorer and Wallet are both 
@@ -23,8 +23,8 @@ be used. We'll cover the following in the process:
 1. Set up Dijets TestNet on Decypher
 2. Generate a 24 word mnemonic phrase through DijetsJS
 3. Derive external Utility Chain addresses through DijetsJS
-4. Get DJTX from Dijets Faucet
-5. Send DJTX via ethersJS
+4. Get DJT from Dijets Faucet
+5. Send DJT via ethersJS
 6. Examine the resulting transaction on Dijets Unified Explorer
 7. Use a Private Key derived from a mnemonic phrase to sign into Dijets wallet
 
@@ -33,12 +33,12 @@ be used. We'll cover the following in the process:
 - **Network Name**: `Dijets Utility Chain`
 - **RPC URL**: `https://testnet.dijets.io/ext/bc/C/rpc`
 - **ChainID**: `98119`
-- **Symbol**: `DJTX`
+- **Symbol**: `DJT`
 
 ## Generate a Mnemonic
 
 To begin, we'll create a mnemonic phrase with
-[DijetsJS](). Mnemonic phrases enable us to encode
+[DijetsJS](/guides/dijetsjs). Mnemonic phrases enable us to encode
 strong security into a human-readable phrase. DijetsJS currently supports 6 languages
 including English, Spanish, Italian, French, Korean,
 and Simplified Chinese. (More languages will be added to the library in the coming weeks)
@@ -140,19 +140,19 @@ console.log({ uAddresses, privateKeys })
 // }
 ```
 
-## Get testnet DJTX from Dijets Faucet
+## Get testnet DJT from Dijets Faucet
 
-We can get 1 DJTX from Dijets faucet. Paste the address into
-[Dijets faucet website](https://faucet.dijets.io). These DJTX are for Dijets
+We can get 1 DJT from Dijets faucet. Paste the address into
+[Dijets faucet website](https://faucet.dijets.io). These DJT are for Dijets
 Testnet and have no monetary value.
 
-![Requesting DJTX](/docs/img/dijets-faucet.png)
+![Requesting DJT](/docs/img/dijets-faucet.png)
 
-The faucet will send 1 DJTX to the address and return a transaction ID
+The faucet will send 1 DJT to the address and return a transaction ID
 (txID). This txID can be used with the Dijets Testnet Explorer to learn more about
 the transaction.
 
-![Receiving DJTX](/docs/img/dijets-faucet-txid.png)
+![Receiving DJT](/docs/img/dijets-faucet-txid.png)
 
 ### Check the Transaction Details
 
@@ -179,17 +179,17 @@ const main = async (): Promise<any> => {
   provider.getBalance(address).then((balance) => {
     // convert a currency unit from wei to ether
     const balanceInDjtx = ethers.utils.formatEther(balance)
-    console.log(`balance: ${balanceInDjtx} DJTX`)
-    // balance: 2 DJTX
+    console.log(`balance: ${balanceInDjtx} DJT`)
+    // balance: 2 DJT
   })
 }
 
 main()
 ```
 
-## Sending DJTX
+## Sending DJT
 
-The faucet sent 1 DJTX to the first address we generated. Let's send DJTX from
+The faucet sent 1 DJT to the first address we generated. Let's send DJT from
 the 1st address to the 2nd address.
 
 ```typescript
@@ -208,7 +208,7 @@ let privateKey =
 let wallet = new ethers.Wallet(privateKey, provider)
 // Receiver Address
 let receiverAddress = "0x3507A1131aba9D07714b76Eb8a245F434198690B"
-// DJTX amount to send
+// DJT amount to send
 let amountInDjtx = "0.05"
 // Create a transaction object
 let tx = {
@@ -248,8 +248,8 @@ const main = async (): Promise<any> => {
   provider.getBalance(address).then((balance) => {
     // convert a currency unit from wei to ether
     const balanceInDjtx = ethers.utils.formatEther(balance)
-    console.log(`balance: ${balanceInDjtx} DJTX`)
-    // balance: 0.02 DJTX
+    console.log(`balance: ${balanceInDjtx} DJT`)
+    // balance: 0.02 DJT
   })
 }
 
@@ -260,7 +260,7 @@ main()
 
 Lastly, we can [use the mnemonic to generate a private
 key](#generate-private-keys-from-a-mnemonic) to access the [Dijets Web
-Wallet](https://wallet.dijets.io). We'll see that it has the DJTX balance and
+Wallet](https://wallet.dijets.io). We'll see that it has the DJT balance and
 that it derives the hexadecimal address from the private key.
 
 Use the private key to access the Web Wallet.
@@ -285,7 +285,7 @@ For additional and valuable resources please see below.
 
 ### Faucet
 
-The [Dijets Faucet](https://faucet.dijets.io) can send DJTX to Value Chain or Utility Chain
+The [Dijets Faucet](https://faucet.dijets.io) can send DJT to Value Chain or Utility Chain
 addresses for testing purposes. (Testnet Djtx has no value.)
 
 ### Wallet

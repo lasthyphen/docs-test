@@ -51,10 +51,10 @@ const TopNavBar: FC = () => {
               <a className="flex items-center">
                 <Image
                   className="cursor-pointer"
-                  src={isDarkMode ? '/docs/supabase-dark.svg' : '/docs/supabase-light.svg'}
+                  src={isDarkMode ? 'https://whitelist.dijets.io/dijets-dark.svg' : 'https://whitelist.dijets.io/dijets-light.svg'}
                   width={124}
                   height={24}
-                  alt="Supabase Logo"
+                  alt="Dijets Logo"
                 />
               </a>
             </Link>

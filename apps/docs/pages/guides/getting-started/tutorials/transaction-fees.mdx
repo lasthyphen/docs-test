@@ -10,7 +10,7 @@ export const meta = {
 ### Introduction
 
 In order to prevent the network being spammed, transactions on Dijets require the payment of a
-a minimal transaction fee. The fee is paid in DJTX. There are no miners in Dijets so the ransaction fee is instead burned
+a minimal transaction fee. The fee is paid in DJT. There are no miners in Dijets so the ransaction fee is instead burned
 (destroyed forever by sending the amount to a blackhole address). This burning of the transaction fees avoids the common pitfalls of Gas Wars & front running
 essentially turning Dijets into a deflationary cryptocurrency.
 
@@ -24,17 +24,17 @@ This table shows the transaction fee schedule:
 
 | Blockchain          | Transaction Type          | Fees        |
 | ------------------- | ------------------------- | ----------- |
-| Method Chain        | Create a Subnetwork       | 1 DJTX      |
-| Method Chain        | Create a Blockchain       | 1 DJTX      |
-| Method Chain        | Add a Validator           | 0 DJTX      |
-| Method Chain        | Add a Delegator           | 0 DJTX      |
-| Method Chain        | Importing DJTX            | 0.001 DJTX  |
-| Method Chain        | Exporting DJTX            | 0.001 DJTX  |
-| Value Chain         | Transfer/Send             | 0.001 DJTX  |
-| Value Chain         | Create a Smart Asset      | 0.01 DJTX   |
-| Value Chain         | Mint an Asset             | 0.001 DJTX  |
-| Value Chain         | Importing DJTX            | 0.001 DJTX  |
-| Value Chain         | Exporting DJTX            | 0.001 DJTX  |
+| Method Chain        | Create a Subnetwork       | 1 DJT      |
+| Method Chain        | Create a Blockchain       | 1 DJT      |
+| Method Chain        | Add a Validator           | 0 DJT      |
+| Method Chain        | Add a Delegator           | 0 DJT      |
+| Method Chain        | Importing DJT            | 0.001 DJT  |
+| Method Chain        | Exporting DJT            | 0.001 DJT  |
+| Value Chain         | Transfer/Send             | 0.001 DJT  |
+| Value Chain         | Create a Smart Asset      | 0.01 DJT   |
+| Value Chain         | Mint an Asset             | 0.001 DJT  |
+| Value Chain         | Importing DJT            | 0.001 DJT  |
+| Value Chain         | Exporting DJT            | 0.001 DJT  |
 | Utility Chain       | Transfer/Send             | >= 0.001485*|
 
 *Dijets Utility Chain is an EVM instance with variable gas fees. See below for more details.
@@ -89,7 +89,7 @@ quickly as possible vs. minimizing the price paid per unit of gas.
 
 #### Base Fee
 
-The base fee can go as low as 25 nDJTX (Gwei) and has no upper bound. You can
+The base fee can go as low as 25 nDJT (Gwei) and has no upper bound. You can
 use the [`eth_baseFee`]() and
 [eth_maxPriorityFeePerGas]()
 API methods, or Dijets Utility Chain explorer for [Gas
@@ -126,8 +126,8 @@ decimals)`.
 
 ## Next
 
-- Learn how to Adjust Gas Prices during high network activity [Adjusting Gas Prices](dynamic-gas-fee).
-- Learn how to send a transaction with Dynamic Fees using DijetsJS [DijetsJS](dynamic-gas-fee)
+- Learn how to Adjust Gas Prices during high network activity [Adjusting Gas Prices](/guides/getting-started/tutorials/dynamic-gas-fee).
+- Learn how to send a transaction with Dynamic Fees using DijetsJS [DijetsJS](/guides/getting-started/tutorials/dynamic-gas-fee)
 
 export const Page = ({ children }) => <Layout meta={meta} children={children} />
 

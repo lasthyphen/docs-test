@@ -58,12 +58,11 @@ Below is the list of all the options and their inputs for the information query 
 2. **Contract Name:** Name of the class whose constructor was called in the .sol file. For example, in `contract MyContract {..` **MyContract** is the contract name.&#x20;
 3. **Include Nightly Builds**: Yes if you want to show nightly builds.
 4. **Compiler:** derived from the first line in the contract `pragma solidity X.X.X`. Use the corresponding compiler version rather than the nightly build.
-5. **EVM Version:** [See EVM version information](../evm-version-information.md)
+5. **EVM Version:** Specify the EVM version when compiling should you wish to avoid particular features or behaviors. Backward compatibility is not guaranteed between each of the EVM versions.
 6. **Optimization:** If you enabled optimization during compilation, check yes.
 7. **Optimization Runs:** 200 is the Solidity Compiler default value. Only change if you changed this value while compiling.
 8. &#x20;**Enter the Solidity Contract Code:** Enter the [flattened](#flatten-a-smart-contract-using-hardhat) & [cleaned up](clean-up-the-flattened-smart-contract) smart contract code we generated earlier with hardhat.
 9. **Try to fetch constructor arguments automatically**: If similar contracts exist these may be available.
-10. **ABI-encoded Constructor Arguments:** [See this page for more info](../abi-encoded-constructor-arguments.md).
 11. **Add Contract Libraries:** Enter the name and 0x address for any required libraries called in the called in the .sol file.
 12. Click the `Verify and Publish` button.
 13. If all goes well, you will see a checkmark :white\_check\_mark: next to Code in the code tab, and an additional tab called `Read Contract`. The contract name will now appear in BlockScout with any transactions related to your contract.
@@ -100,7 +99,7 @@ Below is the list of all the options and their inputs for the information query 
 2. **Contract Name:** Should autopopulate
 3. **Compiler**: Select the compiler version used in the source code.
 4. **Enter the Vyper Contract Code:** Copy and paste the contract code
-5. **ABI-encoded Constructor Arguments (if required):**  [See this page for more info](../abi-encoded-constructor-arguments.md).
+5. **ABI-encoded Constructor Arguments (if required):**
 6. Click the `Verify and Publish` button.
 7. If all goes well, you will see a checkmark :white\_check\_mark: next to Code in the code tab, and an additional tab called `Read Contract`. The contract name will now appear in BlockScout with any transactions related to your contract.
 

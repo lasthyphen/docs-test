@@ -18,22 +18,27 @@ interface ThemeProviderProps {
 }
 
 export const ThemeContext = createContext<UseThemeProps>({
-  isDarkMode: true,
+  isDarkMode: true, // Default to dark mode in context initialization
   toggleTheme: () => {},
 })
 
 export const useTheme = () => useContext(ThemeContext)
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true) // Default to dark mode
 
   useEffect(() => {
-    const key = localStorage.getItem('supabaseDarkMode')
+    const key = localStorage.getItem('DarkMode')
     const mode = key === 'true'
 
+    // Check if the user has a dark mode preference set in localStorage, otherwise default to dark mode
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-    prefersDark ? toggleTheme(true) : toggleTheme(mode)
+    if (key !== null) {
+      toggleTheme(mode)
+    } else {
+      toggleTheme(true)
+    }
   }, [])
 
   const toggleTheme: UseThemeProps['toggleTheme'] = (darkMode) => {

@@ -55,7 +55,7 @@ function getMenuIcon(menuKey: string, width: number = 16, height: number = 16) {
     case 'block':
       return <IconMenuBlock width={width} height={height} />
     case 'radio':
-     return <IconMenuRadio width={width} height={height} />
+     return <IconMenuApi width={width} height={height} />
     case 'auth':
       return <IconMenuAuth width={width} height={height} />
     case 'dapps':

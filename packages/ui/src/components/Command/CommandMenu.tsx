@@ -31,7 +31,6 @@ import DocsSearch from './DocsSearch'
 import GenerateSQL from './GenerateSQL'
 import ThemeOptions from './ThemeOptions'
 import APIKeys from './APIKeys'
-import SearchableStudioItems from './SearchableStudioItems'
 import CommandMenuShortcuts from './CommandMenuShortcuts'
 import { BadgeExperimental } from './Command.Badges'
 
@@ -103,7 +102,7 @@ const CommandMenu = ({ projectRef }: CommandMenuProps) => {
                   forceMount
                 >
                   <AiIcon />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-900 to-brand-1100">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-900 to-brand-800">
                     Ask HAL
                     {search ? (
                       <>
@@ -130,17 +129,6 @@ const CommandMenu = ({ projectRef }: CommandMenuProps) => {
                 ))}
               </CommandGroup>
 
-              {site === 'docs' && (
-                <CommandGroup heading="General">
-                  {sharedItems.docsGeneral.map((item) => (
-                    <CommandItem key={item.url} type="link" onSelect={() => router.push(item.url)}>
-                      {item?.icon && iconPicker[item.icon]}
-                      <CommandLabel>{item.label}</CommandLabel>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              )}
-
               <CommandGroup heading="Settings">
                 <CommandItem type="link" onSelect={() => setPages([...pages, 'Theme'])}>
                   <IconMonitor className="mr-2" />
@@ -149,7 +137,6 @@ const CommandMenu = ({ projectRef }: CommandMenuProps) => {
               </CommandGroup>
 
               <ThemeOptions isSubItem />
-              {site === 'studio' && search && <SearchableStudioItems />}
             </>
           )}
           {currentPage === COMMAND_ROUTES.AI && <AiCommand />}

@@ -38,7 +38,7 @@ const IconPanel = ({
         className={[
           'relative',
           'flex items-center justify-center shrink-0',
-          iconSize === 'lg' ? 'h-16 w-16 rounded-lg' : 'h-10 w-10 rounded-lg',
+          iconSize === 'lg' ? 'h-11 w-11 rounded-lg' : 'h-10 w-10 rounded-lg',
           'group',
           'cursor-pointer',
           'overflow-hidden',
@@ -68,7 +68,7 @@ const IconPanel = ({
             {typeof icon === 'string' ? (
               <IconContainer>
                 <img
-                  className={iconSize === 'lg' ? 'w-8' : 'w-5'}
+                  className={iconSize === 'lg' ? 'w-5' : 'w-4'}
                   src={`${icon}${hasLightIcon && !isDarkMode ? '-light' : ''}.svg`}
                 />
               </IconContainer>

@@ -238,7 +238,7 @@ const HeaderLogo = memo(function HeaderLogo() {
       <a className="px-10 flex items-center gap-2">
         <Image
           className="cursor-pointer"
-          src={isDarkMode ? '/docs/dijets-dark.svg' : '/docs/dijets-light.svg'}
+          src={isDarkMode ? 'https://whitelist.dijets.io/dijets-dark.svg' : 'https://whitelist.dijets.io/dijets-light.svg'}
           width={96}
           height={24}
           alt="Dijets Logo"
@@ -295,7 +295,7 @@ const NavContainer = memo(function NavContainer() {
           'top-0',
           'relative',
           'w-auto',
-          'border-r overflow-auto h-screen',
+          'dark:border-[#2c2c2c9e] border-r overflow-auto h-screen',
           'backdrop-blur backdrop-filter bg-white-1200 dark:bg-scale-200',
           'flex flex-col',
         ].join(' ')}

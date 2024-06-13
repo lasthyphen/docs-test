@@ -45,67 +45,67 @@ among currently supported file format (see
 
 ## APIs
 
-#### `--api-admin-enabled` (boolean)
+### `--api-admin-enabled` (boolean)
 
 If set to `true`, this node will expose the Admin API. Defaults to `false`.
 See [here](/docs/guides/node-apis/admin-api) for more information.
 
-#### `--api-auth-required` (boolean)
+### `--api-auth-required` (boolean)
 
 If set to `true`, API calls require an authorization token. Defaults to `false`.
 See [here](/docs/guides/node-apis/auth-api) for more information.
 
-#### `--api-auth-password` (string)
+### `--api-auth-password` (string)
 
 The password needed to create/revoke authorization tokens. If
 `--api-auth-required=true`, must be specified; otherwise ignored. See
 [here](/docs/guides/node-apis/auth-api) for more information.
 
-#### `--api-health-enabled` (boolean)
+### `--api-health-enabled` (boolean)
 
 If set to `false`, this node will not expose the Health API. Defaults to `true`. See
 [here](/docs/guides/node-apis/health-api) for more information.
 
-#### `--index-enabled` (boolean)
+### `--index-enabled` (boolean)
 
 If set to `true`, this node will enable the indexer and the Index API will be
 available. Defaults to `false`. See
 [here](/docs/guides/node-apis/index-api) for more information.
 
-#### `--api-info-enabled` (boolean)
+### `--api-info-enabled` (boolean)
 
 If set to `false`, this node will not expose the Info API. Defaults to `true`. See
 [here](/docs/guides/node-apis/info-api) for more information.
 
-#### `--api-ipcs-enabled` (boolean)
+### `--api-ipcs-enabled` (boolean)
 
 If set to `true`, this node will expose the IPCs API. Defaults to `false`. See
 [here](/docs/guides/node-apis/ipc-api) for more information.
 
-#### `--api-keystore-enabled` (boolean)
+### `--api-keystore-enabled` (boolean)
 
 If set to `true`, this node will expose the Keystore API. Defaults to `false`.
 See [here](/docs/guides/node-apis/keystore-api) for more information.
 
-#### `--api-metrics-enabled` (boolean)
+### `--api-metrics-enabled` (boolean)
 
 If set to `false`, this node will not expose the Metrics API. Defaults to
 `true`.
 
-#### `--http-shutdown-wait` (duration)
+### `--http-shutdown-wait` (duration)
 
 Duration to wait after receiving SIGTERM or SIGINT before initiating shutdown.
 The `/health` endpoint will return unhealthy during this duration (if the Health
 API is enabled.) Defaults to `0s`.
 
-#### `--http-shutdown-timeout` (duration)
+### `--http-shutdown-timeout` (duration)
 
 Maximum duration to wait for existing connections to complete during node
 shutdown. Defaults to `10s`.
 
 ## Bootstrapping
 
-#### `--bootstrap-beacon-connection-timeout` (duration)
+### `--bootstrap-beacon-connection-timeout` (duration)
 
 Timeout when attempting to connect to bootstrapping beacons. Defaults to `1m`.
 
@@ -779,28 +779,28 @@ Timeout before killing an unresponsive chain. Defaults to `5s`.
 
 #### `--create-asset-tx-fee` (int)
 
-Transaction fee, in nDJTX, for transactions that create new assets. Defaults to
-`10000000` nDJTX (.01 DJTX) per transaction. This can only be changed on a local
+Transaction fee, in nDJT, for transactions that create new assets. Defaults to
+`10000000` nDJT (.01 DJT) per transaction. This can only be changed on a local
 network.
 
 #### `--create-subnetwork-tx-fee` (int)
 
-Transaction fee, in nDJTX, for transactions that create new Subnets. Defaults to
-`1000000000` nDJTX (1 DJTX) per transaction. This can only be changed on a local
+Transaction fee, in nDJT, for transactions that create new Subnets. Defaults to
+`1000000000` nDJT (1 DJT) per transaction. This can only be changed on a local
 network.
 
 #### `--create-blockchain-tx-fee` (int)
 
-Transaction fee, in nDJTX, for transactions that create new blockchains.
-Defaults to `1000000000` nDJTX (1 DJTX) per transaction. This can only be
+Transaction fee, in nDJT, for transactions that create new blockchains.
+Defaults to `1000000000` nDJT (1 DJT) per transaction. This can only be
 changed on a local network.
 
 #### `--min-delegator-stake` (int)
 
-The minimum stake, in nDJTX, that can be delegated to a validator of the Primary Network.
+The minimum stake, in nDJT, that can be delegated to a validator of the Primary Network.
 
-Defaults to `25000000000` (25 DJTX) on Mainnet. Defaults to `5000000` (.005
-DJTX) on Test Net. This can only be changed on a local network.
+Defaults to `25000000000` (25 DJT) on Mainnet. Defaults to `5000000` (.005
+DJT) on Test Net. This can only be changed on a local network.
 
 #### `--min-delegation-fee` (int)
 
@@ -815,10 +815,10 @@ only be changed on a local network.
 
 #### `--min-validator-stake` (int)
 
-The minimum stake, in nDJTX, required to validate the Primary Network. This can
+The minimum stake, in nDJT, required to validate the Primary Network. This can
 only be changed on a local network.
 
-Defaults to `2000000000000` (2,000 DJTX) on Mainnet. Defaults to `5000000` (.005 DJTX) on Test Net.
+Defaults to `2000000000000` (2,000 DJT) on Mainnet. Defaults to `5000000` (.005 DJT) on Test Net.
 
 #### `--max-stake-duration` (duration)
 
@@ -827,8 +827,8 @@ Mainnet. This can only be changed on a local network.
 
 #### `--max-validator-stake` (int)
 
-The maximum stake, in nDJTX, that can be placed on a validator on the primary
-network. Defaults to `3000000000000000` (3,000,000 DJTX) on Mainnet. This
+The maximum stake, in nDJT, that can be placed on a validator on the primary
+network. Defaults to `3000000000000000` (3,000,000 DJT) on Mainnet. This
 includes stake provided by both the validator and by delegators to the
 validator. This can only be changed on a local network.
 
@@ -851,16 +851,16 @@ the minting period, which is 1 year on Mainnet. Defaults to `100,000` which is
 
 #### `--stake-supply-cap` (uint)
 
-The maximum stake supply, in nDJTX, that can be placed on a validator. Defaults
-to `111,000,000,000,000,000` nDJTX. This can only be changed on a local network.
+The maximum stake supply, in nDJT, that can be placed on a validator. Defaults
+to `111,000,000,000,000,000` nDJT. This can only be changed on a local network.
 
 #### `--tx-fee` (int)
 
-The required amount of nDJTX to be burned for a transaction to be valid on the
+The required amount of nDJT to be burned for a transaction to be valid on the
 Value Chain, and for import/export transactions on the Method Chain. This parameter
 requires network agreement in its current form. Changing this value from the
 default should only be done on private networks or local network. Defaults to
-`1,000,000` nDJTX per transaction.
+`1,000,000` nDJT per transaction.
 
 #### `--uptime-requirement` (float)
 

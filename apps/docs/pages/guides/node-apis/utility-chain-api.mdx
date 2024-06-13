@@ -101,7 +101,7 @@ is 40. We are working on to support a larger batch size.
 ### `eth_getAssetBalance`
 
 In addition to the standard Ethereum APIs, Dijets offers `eth_getAssetBalance` to retrieve the
-balance of first class Dijets Native Tokens on the Utility Chain (excluding DJTX, which must be fetched
+balance of first class Dijets Native Tokens on the Utility Chain (excluding DJT, which must be fetched
 with `eth_getBalance`).
 
 **Signature:**
@@ -210,7 +210,7 @@ curl -X POST --data '{
 ```
 
 For more information on dynamic fees see the [Utility Chain section of the transaction fee
-documentation](docs/guides/getting-started/tutorials/transaction-fees#utility-chain-fees).
+documentation](/guides/getting-started/tutorials/transaction-fees#utility-chain-fees).
 
 ### `eth_getChainConfig`
 
@@ -271,7 +271,7 @@ To interact with the `djtx` specific RPC calls on the Utility Chain:
 /ext/bc/C/djtx
 ```
 
-To interact with other instances of the EVM DJTX endpoints:
+To interact with other instances of the EVM DJT endpoints:
 
 ```text
 /ext/bc/blockchainID/djtx
@@ -302,7 +302,7 @@ djtx.export({
 
 - `to` is the Value Chain or Method Chain address the asset is sent to.
 - `amount` is the amount of the asset to send.
-- `assetID` is the ID of the asset. To export DJTX use `"DJTX"` as the `assetID`.
+- `assetID` is the ID of the asset. To export DJT use `"DJT"` as the `assetID`.
 - `baseFee` is the base fee that should be used when creating the transaction. If omitted, a
   suggested fee will be used.
 - `username` is the user that controls the address that transaction will be sent from.
@@ -337,21 +337,21 @@ curl -X POST --data '{
 }
 ```
 
-### `djtx.exportDJTX`
+### `djtx.exportDJT`
 
 <Admonition type="caution">
 Not recommended for use on Mainnet. See warning notice in [Keystore API](keystore-api).
 </Admonition>
 
-Send DJTX from the Utility Chain to Value Chain or Method Chain. After calling this method, you must call the
+Send DJT from the Utility Chain to Value Chain or Method Chain. After calling this method, you must call the
 Value Chain's [`avm.import`](value-chain#avmimport) or Method Chain's
-[`platform.import`](method-chain#methodimportdjtx) with assetID `DJTX` on the Value Chain to complete
+[`platform.import`](method-chain#methodimportdjtx) with assetID `DJT` on the Value Chain to complete
 the transfer.
 
 **Signature:**
 
 ```go
-djtx.exportDJTX({
+djtx.exportDJT({
     to: string,
     amount: int,
     baseFee: int,
@@ -379,7 +379,7 @@ djtx.exportDJTX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"djtx.exportDJTX",
+    "method" :"djtx.exportDJT",
     "params" :{
         "from": ["0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC"],
         "to":"X-dijets18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
@@ -658,9 +658,9 @@ This gives response:
 Not recommended for use on Mainnet. See warning notice in [Keystore API](keystore-api).
 </Admonition>
 
-Finalize the transfer of a non-DJTX or DJTX from Value Chain or Method Chain to the Utility Chain. Before this
+Finalize the transfer of a non-DJT or DJT from Value Chain or Method Chain to the Utility Chain. Before this
 method is called, you must call the Value Chain’s [`avm.export`](value-chain-api#avmexport) or Method Chain’s
-[`platform.exportDJTX`](method-chain-api#platformexportdjtx) with assetID `DJTX` to initiate the transfer.
+[`platform.exportDJT`](method-chain-api#platformexportdjtx) with assetID `DJT` to initiate the transfer.
 
 **Signature:**
 
@@ -717,20 +717,20 @@ curl -X POST --data '{
 }
 ```
 
-### `djtx.importDJTX`
+### `djtx.importDJT`
 
 <Admonition type="caution">
 Not recommended for use on Mainnet. See warning notice in [Keystore API](keystore-api).
 </Admonition>
 
-Finalize a transfer of DJTX from the Value Chain or Method Chain to the Utility Chain. Before this method is
+Finalize a transfer of DJT from the Value Chain or Method Chain to the Utility Chain. Before this method is
 called, you must call the Value Chain’s [`avm.export`](value-chain-api#avmexport) or Method Chain’s
-[`platform.exportDJTX`](method-chain-api#platformexportdjtx) with assetID `DJTX` to initiate the transfer.
+[`platform.exportDJT`](method-chain-api#platformexportdjtx) with assetID `DJT` to initiate the transfer.
 
 **Signature:**
 
 ```go
-djtx.importDJTX({
+djtx.importDJT({
     to: string,
     sourceChain: string,
     baseFee: int, // optional
@@ -741,8 +741,8 @@ djtx.importDJTX({
 
 **Request:**
 
-- `to` is the address the DJTX is sent to. It should be in hex format.
-- `sourceChain` is the ID or alias of the chain the DJTX is being imported from. To import funds
+- `to` is the address the DJT is sent to. It should be in hex format.
+- `sourceChain` is the ID or alias of the chain the DJT is being imported from. To import funds
   from the Value Chain, use `"X"`; for the Method Chain, use `"P"`.
 - `baseFee` is the base fee that should be used when creating the transaction. If omitted, a
   suggested fee will be used.
@@ -759,7 +759,7 @@ djtx.importDJTX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"djtx.importDJTX",
+    "method" :"djtx.importDJT",
     "params" :{
         "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",
         "sourceChain":"X",

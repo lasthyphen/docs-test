@@ -7,12 +7,12 @@ description: An HTTP Client for PostgreSQL Functions.
 ### Dijets Wallet Addresses
 
 A new address is created by Dijets wallet after each confirmed transaction or deposit. 
-This is mainly done for privacy reasons so a third party doesn’t see all of your DJTX in one address. 
+This is mainly done for privacy reasons so a third party doesn’t see all of your DJT in one address. 
 
 :::note
 
 Although Dijets Wallet creates a new address after each new transaction occurs, all of the addresses 
-continue to link to the same wallet. Which means that you can continue to use your old wallet address for receiving DJTX
+continue to link to the same wallet. Which means that you can continue to use your old wallet address for receiving DJT
 
 :::
 
@@ -60,7 +60,7 @@ curl -X POST --data '{
         "password":"DjtxV!rT6c"
     },
     "id": 1
-}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/X
+}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/V
 ```
 
 
@@ -84,7 +84,7 @@ curl -X POST --data '{
         "password":"DjtxV!rT6c"
     },
     "id": 1
-}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/X
+}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/V
 ```
 If the call was made successfully then you should see an output as a response with a newly generated Dijets Address:
 
@@ -110,7 +110,7 @@ curl -X POST --data '{
         "password":"DjtxV!rT6c",
         "address":"X-dijets1xcprqajsw6gtfsvlh9x5rdlmqolrgkmns2fqr2r0"
     }
-}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/X
+}' -H 'content-type:application/json;' https://dijets.ukwest.cloudapp.azure.com:443/ext/bc/V
 ```
 We use the same username and password as the first command and in the address param, we added the address generated in the previous step.
 
@@ -146,5 +146,5 @@ The address you generated with the commands above is a Singleton Wallet address.
 
 ## Next Step
 
-Now that you have generated a singleton wallet address, you can use the generated Private Key to log into [Dijets Wallet](https://wallet.dijets.io) and stake your 25K DJTX to complete the Council Membership registration.
+Now that you have generated a singleton wallet address, you can use the generated Private Key to log into [Dijets Wallet](https://wallet.dijets.io) and stake your 25K DJT to complete the Council Membership registration.
 

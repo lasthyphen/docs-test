@@ -33,10 +33,10 @@ our [Qowalts](https://redirect.dijets.io/#/#dijets-support:dijets.org) to ask qu
 ## Requirements
 
 You've completed [Run an Dijets
-Node](/docs/guides/nodes/run-dijets-node-manually) and are familiar with
+Node](/guides/nodes/run-dijets-node-manually) and are familiar with
 [Dijets
-architecture](/docs/guides/getting-started/introduction). In this
-tutorial, we use [DijetsJS](/docs/guides/dijetsjs) and
+architecture](/guides/getting-started/introduction). In this
+tutorial, we use [DijetsJS](/guides/dijetsjs) and
 [Dijets Postman
 collection](https://github.com/Dijets-Inc/dijets-postman-collection) to help us
 make API calls.
@@ -83,12 +83,12 @@ Fill out the staking parameters. They are explained in more detail in [this
 doc](staking). When you’ve filled in all the staking parameters
 and double-checked them, click `Confirm`. Make sure the staking period is at
 least 2 weeks, the delegation fee rate is at least 2%, and you’re staking at
-least 2,000 DJTX on Mainnet (1 DJTX on Dijets TestNet Testnet).
+least 2,000 DJT on Mainnet (1 DJT on Dijets TestNet Testnet).
 
 You should see a success message, and your balance should be updated.
 
 Calling
-[`platform.getPendingValidators`](/docs/node-apis/method-chain-api#methodgetpendingvalidators)
+[`platform.getPendingValidators`](/docs/guides/node-apis/method-chain-api#methodgetpendingvalidators)
 verifies that your transaction was accepted. Note that this API call should be
 made before your node's validation start time, otherwise, the return will not
 include your node's id as it is no longer pending.
@@ -100,14 +100,14 @@ earn, as well as its start time, end time, and the percentage of its validation
 period that has passed.
 
 You can also call the
-[`method.getCurrentValidators`](/docs/node-apis/method-chain-api#methodgetpendingvalidators)
+[`method.getCurrentValidators`](/docs/guides/node-apis/method-chain-api#methodgetpendingvalidators)
 to check that your node's id is included in the response.
 
 That’s it!
 
 ## Add a Validator with DijetsJS
 
-We can also add a node to the validator set using [DijetsJS](/docs/add-validator-with-dijets).
+We can also add a node to the validator set using [DijetsJS](/guides/dijetsjs).
 
 ### Install DijetsJS
 
@@ -156,7 +156,7 @@ const privKey: string = "<YOUR-PRIVATE-KEY-HERE>"
 
 #### Network Setting
 
-The following settings work when using a local node started with [`--network-id=testnet`](../../nodes/maintain/dijetsnodego-config-flags.md#network-id):
+The following settings work when using a local node started with [`--network-id=testnet`](../..//docs/guides/nodes/node-flags-configs#network-id):
 
 ```js
 const ip: string = "localhost"
@@ -184,7 +184,7 @@ _Example Address: 5 - X-`dijets`19rknw8l0grnfunjrzwxlxync6zrlu33yxqzg0h_
 
 For Dijets TestNet Testnet, 5 is the correct value to use.
 
-To learn more about encoded addresses, click [here](/docs/guides/dijetsjs/keys-management#encode-bech32-addresses).
+To learn more about encoded addresses, click [here](/guides/dijetsjs/keys-management#encode-bech32-addresses).
 
 #### Settings for Validation
 
@@ -255,7 +255,7 @@ requirements.
 
 Set the proper staking amount in calling `pchain.buildAddValidatorTx` by
 replacing `stakeAmount.minValidatorStake` with a number in the unit of gwei, for
-example, `BN(1e12)` which is 10,000 DJTX.
+example, `BN(1e12)` which is 10,000 DJT.
 
 #### Addresses
 
@@ -355,7 +355,7 @@ The response should include the node we just added:
 When the time reaches `1654656829` (Wed Jun 08 2022 02:53:49 GMT+0000), this
 node will start validating the Primary Network. When it reaches `1662602029`
 (Thu Sep 08 2022 01:53:49 GMT+0000), this node will stop validating the Primary
-Network. The staked DJTX and the rewards, if any, will be returned to
+Network. The staked DJT and the rewards, if any, will be returned to
 `pAddressStrings`.
 
 #### Customizing Addresses
@@ -441,11 +441,11 @@ The Dijets TestNet workflow above can be adapted to Mainnet with the following m
 
 - The correct private key.
 - Network setting should be to a Mainnet node, either [a local node on
-  Mainnet](/docs/guides/nodes/node-flags-configs#network-id) or
+  Mainnet](/guides/nodes/node-flags-configs#network-id) or
   [Dijets Mainnet API
-  server](/docs/guides/public-api#using-the-public-api-nodes)
+  server](/guides/public-api#using-the-public-api-nodes)
   where `` should be used for the `ip`.
-- `const networkID: number = 1` based on [this](/docs/guides/dijetsjs/keys-management#encode-bech32-addresses).
+- `const networkID: number = 1` based on [this](/guides/dijetsjs/keys-management#encode-bech32-addresses).
 - Set the correct amount to stake.
 
 export const Page = ({ children }) => <Layout meta={meta} children={children} />

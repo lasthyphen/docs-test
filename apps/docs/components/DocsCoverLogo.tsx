@@ -6,7 +6,7 @@ const DocsCoverLogo = () => {
     initial: { pathLength: 0 },
     animate: { pathLength: 1 },
     transition: {
-      duration: 1,
+      duration: 2,
       delay: 0.2,
       ease: [0.5, 0.11, 0.13, 1],
     },
@@ -15,14 +15,14 @@ const DocsCoverLogo = () => {
     initial: { fillOpacity: 0 },
     animate: { fillOpacity: 1 },
     transition: {
-      duration: 1,
+      duration: 2,
       delay: 0.5,
       ease: [0.25, 0.25, 0, 1],
     },
   }
 
   return (
-    <div className="w-[80px] md:w-[120px] [&_svg]">
+    <div className="hidden lg:block lg:w-[160px] [&_svg]">
       <LazyMotion features={domAnimation}>
         <m.svg
           width="100%"
@@ -39,17 +39,6 @@ const DocsCoverLogo = () => {
             stroke="url(#paint0_radial_0_1)"
             stroke-opacity="0.5"
             stroke-width="0.7"
-          />
-          <m.path
-            initial={pathMotionConfig.initial}
-            animate={pathMotionConfig.animate}
-            transition={pathMotionConfig.transition as any}
-            d="M125.25 191.383C167.828 191.383 202.344 156.867 202.344 114.289C202.344 71.7115 167.828 37.1953 125.25 37.1953C82.6724 37.1953 48.1562 71.7115 48.1562 114.289C48.1562 156.867 82.6724 191.383 125.25 191.383Z"
-            stroke="var(--colors-scale11)"
-            stroke-opacity="0.1"
-            stroke-width="0.7"
-            stroke-miterlimit="10"
-            stroke-linejoin="bevel"
           />
           <m.path
             initial={pathMotionConfig.initial}
@@ -112,19 +101,6 @@ const DocsCoverLogo = () => {
             initial={pathMotionConfig.initial}
             animate={pathMotionConfig.animate}
             transition={pathMotionConfig.transition as any}
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M216.724 223.903H33.7779C18.719 223.903 6.5 211.684 6.5 196.625V31.9576C6.5 16.8987 18.719 4.67969 33.7779 4.67969H216.724C231.782 4.67969 244.001 16.8987 244.001 31.9576V196.625C244.001 211.704 231.802 223.903 216.724 223.903Z"
-            stroke="url(#paint6_linear_0_1)"
-            stroke-opacity="0.5"
-            stroke-width="0.7"
-            stroke-miterlimit="10"
-            stroke-linejoin="bevel"
-          />
-          <m.path
-            initial={pathMotionConfig.initial}
-            animate={pathMotionConfig.animate}
-            transition={pathMotionConfig.transition as any}
             d="M60.7578 30.9199V197.027"
             stroke="url(#paint7_linear_0_1)"
             stroke-opacity="0.5"
@@ -149,7 +125,7 @@ const DocsCoverLogo = () => {
             transition={pathMotionConfig.transition as any}
             d="M149.809 4.83984L13.5996 178.866"
             stroke="url(#paint9_linear_0_1)"
-            stroke-opacity="0.5"
+            stroke-opacity="0.3"
             stroke-width="0.7"
             stroke-miterlimit="10"
             stroke-linejoin="bevel"
@@ -160,7 +136,7 @@ const DocsCoverLogo = () => {
             transition={pathMotionConfig.transition as any}
             d="M239.679 46.457L99.5703 223.643"
             stroke="url(#paint10_linear_0_1)"
-            stroke-opacity="0.5"
+            stroke-opacity="0.3"
             stroke-width="0.7"
             stroke-miterlimit="10"
             stroke-linejoin="bevel"
@@ -192,7 +168,7 @@ const DocsCoverLogo = () => {
             transition={pathMotionConfig.transition as any}
             d="M6.76172 95.4141H243.743"
             stroke="url(#paint13_linear_0_1)"
-            stroke-opacity="0.5"
+            stroke-opacity="0.2"
             stroke-width="0.7"
             stroke-miterlimit="10"
             stroke-linejoin="bevel"
@@ -203,7 +179,7 @@ const DocsCoverLogo = () => {
             transition={pathMotionConfig.transition as any}
             d="M6.76172 131.869H243.743"
             stroke="url(#paint14_linear_0_1)"
-            stroke-opacity="0.5"
+            stroke-opacity="0.2"
             stroke-width="0.7"
             stroke-miterlimit="10"
             stroke-linejoin="bevel"
@@ -237,8 +213,7 @@ const DocsCoverLogo = () => {
               transition={logoMotionConfig.transition as any}
               d="M67,74.039c.235,.239,.646,.459,.676,.721,.292,2.558,1.891,4.276,3.834,5.65,17.841,12.62,35.685,25.234,53.591,37.762,4.324,3.027,7.754,2.851,12.022-.149,9.751-6.857,19.495-13.724,29.225-20.611,5.518-3.905,9.541-8.981,11.646-15.409,.734-2.243,1.017-4.632,1.325-6.098,0,5.6,.416,12.092-.106,18.509-.642,7.911-4.628,14.435-10.994,19.132-10.605,7.825-21.419,15.373-32.238,22.904-3.518,2.45-7.245,1.808-10.691-.43-3.534-2.296-7.041-4.639-10.478-7.076-14.244-10.095-28.452-20.24-42.684-30.351-2.438-1.733-4.364-3.78-4.798-6.877,.01-5.031,.028-10.063,.015-15.094-.001-.382-.225-.764-.345-1.145v-1.44Zm0,40.141c.224,.15,.628,.281,.646,.453,.311,2.853,2.229,4.575,4.354,6.121,8.177,5.949,16.312,11.958,24.578,17.781,9.153,6.447,18.424,12.727,27.66,19.057,5.292,3.627,8.228,3.642,13.512-.053,9.373-6.554,18.688-13.19,28.055-19.754,5.583-3.911,9.814-8.876,12.008-15.349,.815-2.403,1.146-4.968,2.025-7.464-.242,6.967-.033,13.985-.847,20.885-.872,7.392-4.947,13.429-10.929,17.823-10.524,7.73-21.242,15.199-31.947,22.683-3.751,2.623-7.576,1.844-11.154-.538-4.66-3.102-9.309-6.225-13.873-9.464-13.155-9.336-26.264-18.736-39.392-28.11-2.346-1.676-4.024-3.779-4.388-6.73,.016-5.098,.039-10.195,.033-15.292,0-.323-.223-.646-.342-.968,0-.361,0-.721,0-1.081Zm26.097-41.465c.305-.346,.462-.614,.694-.776,5.676-3.96,11.253-8.075,17.075-11.812,6.025-3.867,12.678-6.138,19.956-6.126,6.784,.011,12.937,2.159,18.517,5.87,2.697,1.794,5.307,3.774,7.7,5.949,3.869,3.516,4.269,9.778,1.191,13.987-.688,.941-1.403,1.002-2.306,.401-1.254-.834-2.497-1.683-3.772-2.482-12.877-8.071-25.756-7.984-38.631,.01-2.046,1.27-4.072,2.575-6.156,3.78-.419,.242-1.218,.337-1.576,.101-4.018-2.655-7.985-5.386-11.958-8.108-.238-.163-.404-.43-.734-.794Z"
               fill="url(#paint16_linear_0_1)"
-              fill-opacity="0.7"
-              shape-rendering="sharpEdges"
+              fill-opacity="0.5"
             />
             <m.path
               initial={pathMotionConfig.initial}
@@ -246,10 +221,8 @@ const DocsCoverLogo = () => {
               transition={pathMotionConfig.transition as any}
               d="M67,74.039c.235,.239,.646,.459,.676,.721,.292,2.558,1.891,4.276,3.834,5.65,17.841,12.62,35.685,25.234,53.591,37.762,4.324,3.027,7.754,2.851,12.022-.149,9.751-6.857,19.495-13.724,29.225-20.611,5.518-3.905,9.541-8.981,11.646-15.409,.734-2.243,1.017-4.632,1.325-6.098,0,5.6,.416,12.092-.106,18.509-.642,7.911-4.628,14.435-10.994,19.132-10.605,7.825-21.419,15.373-32.238,22.904-3.518,2.45-7.245,1.808-10.691-.43-3.534-2.296-7.041-4.639-10.478-7.076-14.244-10.095-28.452-20.24-42.684-30.351-2.438-1.733-4.364-3.78-4.798-6.877,.01-5.031,.028-10.063,.015-15.094-.001-.382-.225-.764-.345-1.145v-1.44Zm0,40.141c.224,.15,.628,.281,.646,.453,.311,2.853,2.229,4.575,4.354,6.121,8.177,5.949,16.312,11.958,24.578,17.781,9.153,6.447,18.424,12.727,27.66,19.057,5.292,3.627,8.228,3.642,13.512-.053,9.373-6.554,18.688-13.19,28.055-19.754,5.583-3.911,9.814-8.876,12.008-15.349,.815-2.403,1.146-4.968,2.025-7.464-.242,6.967-.033,13.985-.847,20.885-.872,7.392-4.947,13.429-10.929,17.823-10.524,7.73-21.242,15.199-31.947,22.683-3.751,2.623-7.576,1.844-11.154-.538-4.66-3.102-9.309-6.225-13.873-9.464-13.155-9.336-26.264-18.736-39.392-28.11-2.346-1.676-4.024-3.779-4.388-6.73,.016-5.098,.039-10.195,.033-15.292,0-.323-.223-.646-.342-.968,0-.361,0-.721,0-1.081Zm26.097-41.465c.305-.346,.462-.614,.694-.776,5.676-3.96,11.253-8.075,17.075-11.812,6.025-3.867,12.678-6.138,19.956-6.126,6.784,.011,12.937,2.159,18.517,5.87,2.697,1.794,5.307,3.774,7.7,5.949,3.869,3.516,4.269,9.778,1.191,13.987-.688,.941-1.403,1.002-2.306,.401-1.254-.834-2.497-1.683-3.772-2.482-12.877-8.071-25.756-7.984-38.631,.01-2.046,1.27-4.072,2.575-6.156,3.78-.419,.242-1.218,.337-1.576,.101-4.018-2.655-7.985-5.386-11.958-8.108-.238-.163-.404-.43-.734-.794Z"
               stroke="url(#paint17_linear_0_1)"
-              stroke-width="1"
+              stroke-width="2"
               stroke-miterlimit="10"
-              stroke-linejoin="bevel"
-              shape-rendering="sharpEdges"
             />
           </g>
           <defs>
@@ -300,7 +273,7 @@ const DocsCoverLogo = () => {
               y2="11.9994"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="var(--colors-scale11)" stop-opacity="0.5" />
+              <stop stop-color="var(--colors-scale11)" stop-opacity="0.8" />
               <stop offset="1" stop-color="var(--colors-scale10)" stop-opacity="0" />
             </linearGradient>
             <linearGradient
@@ -311,7 +284,7 @@ const DocsCoverLogo = () => {
               y2="204.984"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="var(--colors-scale11)" stop-opacity="0.5" />
+              <stop stop-color="var(--colors-scale11)" stop-opacity="0.8" />
               <stop offset="1" stop-color="var(--colors-scale10)" stop-opacity="0" />
             </linearGradient>
             <linearGradient
@@ -472,8 +445,8 @@ const DocsCoverLogo = () => {
               y2="206.049"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#212121" />
-              <stop offset="1" stop-color="white" stop-opacity="0.12" />
+              <stop stop-color="#6A6A6A" />
+              <stop offset="1" stop-color="var(--colors-scale11)" stop-opacity="0.5" />
             </linearGradient>
             <linearGradient
               id="paint17_linear_0_1"

@@ -49,6 +49,7 @@ const nextConfig = {
   basePath: '/docs',
   images: {
     dangerouslyAllowSVG: true,
+    unoptimized: true,
     domains: [
       'avatars.githubusercontent.com',
       'github.com',

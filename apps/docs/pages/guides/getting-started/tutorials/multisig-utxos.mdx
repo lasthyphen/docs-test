@@ -23,7 +23,7 @@ outputs. Similarly, we add the amount in the UTXOs owned by an address to
 calculate its balance. Signing a transaction basically adds the signature of the
 UTXO owners included in the inputs.
 
-Suppose, account Alice wants to send 1.3 DJTX to account Bob, then it has to include all
+Suppose, account Alice wants to send 1.3 DJT to account Bob, then it has to include all
 those unspent outputs in a transaction, that are owned by Alice at that point and whose sum of
 amounts in those outputs is more than or equal to 1.3. These UTXOs will be
 included as inputs in a transaction. Account Alice also has to create outputs with
@@ -36,10 +36,10 @@ outputs will become new UTXOs for the receiver. If the inputs have more amount
 unlocked than being consumed by the outputs, then the excess amount will be
 burned as fees. Therefore, we should also create a change output which will be
 assigned to us, if there is an excess amount in the input. In the diagram given
-below, a total of 1.72 DJTX is getting unlocked in inputs, therefore we have
-also created a change output for the excess amount (0.41 DJTX) to the sender's
+below, a total of 1.72 DJT is getting unlocked in inputs, therefore we have
+also created a change output for the excess amount (0.41 DJT) to the sender's
 address. The remaining amount after being consumed by the outputs like
-receiver's and change output, is burned as fees (0.01 DJTX).
+receiver's and change output, is burned as fees (0.01 DJT).
 
 ![multisig UTXOs 1](/docs/img/multi-utxos-djtx.png)
 
@@ -566,7 +566,7 @@ const updateInputs = async (
 
 Only those UTXOs will be included whose output ID is `7` representing
 `SECPTransferOutput`. These outputs are used for transferring assets. Also, we
-are only including outputs containing `DJTX` assets. These conditions are
+are only including outputs containing `DJT` assets. These conditions are
 checked in the following line -
 
 ```javascript
@@ -842,7 +842,7 @@ async function sendBaseTx() {
   // unlock amount = sum(output amounts) + fee
   let fee = new BN(1e6)
 
-  // creating outputs of 0.5 (multisig) and 0.1 DJTX - change output will be added by the function in the last
+  // creating outputs of 0.5 (multisig) and 0.1 DJT - change output will be added by the function in the last
   let outputConfig = [
     {
       amount: new BN(5e8),
@@ -876,10 +876,10 @@ async function sendBaseTx() {
 
 We have created the BaseTx with the following output configuration -
 
-- Multi-sig output of value 0.5 DJTX with threshold 2 and owners represented by
+- Multi-sig output of value 0.5 DJT with threshold 2 and owners represented by
   `addresses.x`. The owners are basically an array of addresses in Buffer
   representation.
-- Single owner output of value 0.1 DJTX.
+- Single owner output of value 0.1 DJT.
 
 ```javascript
 let outputConfig = [
@@ -987,7 +987,7 @@ async function exportXP() {
   // consuming amount = sum(output amount) + fee
   let fee = new BN(1e6)
 
-  // creates mutlti-sig (0.1 DJTX) and single-sig (0.03 DJTX) output for exporting to P Address (0.001 DJTX will be fees)
+  // creates mutlti-sig (0.1 DJT) and single-sig (0.03 DJT) output for exporting to P Address (0.001 DJT will be fees)
   let outputConfig = [
     {
       amount: new BN(3e6),

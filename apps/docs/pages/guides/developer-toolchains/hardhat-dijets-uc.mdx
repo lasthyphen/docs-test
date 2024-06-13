@@ -154,7 +154,7 @@ task("accounts", "Prints the list of accounts", async (args, hre): Promise<void>
   })
 })
 
-task("balances", "Prints the DJTX account balances for each address", async (args, hre): Promise<void> => {
+task("balances", "Prints the DJT account balances for each address", async (args, hre): Promise<void> => {
   const accounts: SignerWithAddress[] = await hre.ethers.getSigners()
   for(const account of accounts){
     const balance: BigNumber = await hre.ethers.provider.getBalance(
@@ -166,7 +166,7 @@ task("balances", "Prints the DJTX account balances for each address", async (arg
 ```
 
 `npx hardhat accounts` prints the list of accounts. `npx hardhat balances` prints the list of
-DJTX account balances. As with other `yarn` scripts you can pass in a
+DJT account balances. As with other `yarn` scripts you can pass in a
 `--network` flag to hardhat tasks.
 
 ### Accounts
@@ -191,7 +191,7 @@ npx hardhat accounts --network local
 
 ### Balances
 
-Prints a list of accounts and their corresponding DJTX balances on the
+Prints a list of accounts and their corresponding DJT balances on the
 local network started with Dijets-up.
 
 ```text
@@ -212,7 +212,7 @@ npx hardhat balances --network local
 
 <Admonition type="info">
 
-The first account with DJTX balance is the same account we used in previous tutorials too.
+The first account with DJT balance is the same account we used in previous tutorials too.
 This address and the private key associated with it is the
 pre-funded account specified in the local network genesis file.
 
@@ -468,7 +468,7 @@ Here's an example of `erc20.abi.json` - genericErc20Abi
 </RefDetailCollapse>
 
 The example uses the [Utility Chain Public
-API](/docs/guides/public-api) for the provider. For a local
+API](/guides/public-api) for the provider. For a local
 Dijets network use `http://127.0.0.1:9650/ext/bc/C/rpc` and for Testnet
 use `https://testnet.dijets.io/ext/bc/C/rpc`.
 
