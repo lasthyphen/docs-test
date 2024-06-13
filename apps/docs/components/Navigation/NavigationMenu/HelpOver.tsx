@@ -13,7 +13,6 @@ import {
   import Link from 'next/link'
   import Image from 'next/image'
   
-  import SVG from 'react-inlinesvg'
 import HomeLayout from '~/layouts/HomeLayout'
   
   interface Props {}
